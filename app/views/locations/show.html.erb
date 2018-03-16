@@ -1,4 +1,52 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @location.primary_site_name %></h1>
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
+<p>Postgres id: <%= @location.id %></p>
+<p>Airtable id: <%= @location.at_locations_table_id %></p>
+<p>Location id: <%= @location.location_id %></p>
+<p>Latitude: <%= @location.latitude %></p>
+<p>Longitude: <%= @location.longitude %></p>
+<p>Wikipedia: <%= @location.wikipedia_link %></p>
+<p>Fortalezas: <%= @location.fortalezas_link %></p>
+<p>Castillos.net: <%= u@location.castillosnet_link %></p>
+<p>Collaborator: <%= @location.at_collaborator_id %></p>
+<p>A360 Model: <%= @location.a360_3D_model_link %></p>
+<p>Airtable record time created: <%= @location.at_locations_table_time_created %></p>
+<p>Postgres time created: <%= @location.created_at %></p>
+<p>Postgres time updated: <%= @location.updated_at %></p>
+<p>Lonlat: <%= @location.lonlat %></p>
+<p>URL: <%= link_to location_path(@location), location_path(@location) %>
+</p>
+
+<h2>Perspective Drawings: </h2>
+<% @location.perspective_drawings.each do |perspective_drawing| %>
+<p>Postgres id: <%= perspective_drawing.id %></p>
+<p>Airtable id: <%= perspective_drawing.at_perspective_drawings_table_id %></p>
+<p>Folio number: <%= perspective_drawing.folio_number %></p>
+<p>View direction: <%= perspective_drawing.view_direction %></p>
+<p>Secondary site name: <%= perspective_drawing.secondary_site_name %></p>
+<p>Secondary site kingdom: <%= perspective_drawing.secondary_site_kingdom %></p>
+<p>Number of watchtowers: <%= perspective_drawing.number_of_watchtowers %></p>
+<p>Exterior features: <%= perspective_drawing.exterior_features %></p>
+<p>Fortress features: <%= perspective_drawing.fortress_features %></p>
+<% end %>
+<h2>Images: </h2>
+<% @location.images.each_with_index do |image, index| %>
+<h3>Image number: <%= index +1  %></h3>
+<img src="<%= image.large_thumbnail_url %>"/>
+
+<p>Postgres id: <%= image.id %></p>
+<p>Airtable id: <%= image.at_image_id %></p>
+<p>Url: <%= image.url %></p>
+<p>filename: <%= image.filename %></p>
+<p>size: <%= image.size %></p>
+<p>small thumbnail url: <%= image.small_thumbnail_url %></p>
+<p>small thumbnail width: <%= image.small_thumbnail_width %></p>
+<p>small thumbnail height: <%= image.small_thumbnail_height %></p>
+<p>large thumbnail url: <%= image.large_thumbnail_url %></p>
+<p>large thumbnail width: <%= image.large_thumbnail_width %></p>
+<p>large thumbnail height: <%= image.large_thumbnail_height %></p>
+<p>image type: <%= image.image_type %></p>
+<p>image category: <%= image.image_category %></p>
+<% end %>
+
 <%= link_to 'Back', locations_path %>
