@@ -1,0 +1,2 @@
+class PerspectiveDrawing < ApplicationRecord
+end

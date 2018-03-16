@@ -1,0 +1,17 @@
+<%= form_with(model: perspective_drawing, local: true) do |form| %>
+  <% if perspective_drawing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(perspective_drawing.errors.count, "error") %> prohibited this perspective_drawing from being saved:</h2>
+
+      <ul>
+      <% perspective_drawing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
