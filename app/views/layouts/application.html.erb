@@ -15,12 +15,17 @@
       <nav>
         <a href="#" id="menu-icon"></a>
         <ul>
-          <li><a class="current"><%= link_to 'Home', root_path %></a></li>
-          <li><a><%= link_to 'Locations', locations_path %></a></li>
-          <li><a><%= link_to 'Wired!', "http://www.dukewired.org/" %></a></li>
+          <li><a class="current"><%= link_to 'HOME', root_path %></a></li>
+          <li><a><%= link_to 'LOCATIONS', locations_path %></a></li>
+          <li><a><%= link_to 'WIRED!', "http://www.dukewired.org/" %></a></li>
         </ul>
       </nav>
+      <div id="header_border">
+
+      </div>
     </header>
+    <section>
     <%= yield %>
+    </secton>
   </body>
 </html>
