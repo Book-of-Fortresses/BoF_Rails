@@ -1,13 +1,43 @@
 <h1><%= @location.primary_site_name %></h1>
+
+<% if @location.latitude %>
 <p>Latitude: <%= @location.latitude %></p>
+<% end %>
+
+<% if @location.latitude %>
 <p>Longitude: <%= @location.longitude %></p>
-<p>Wikipedia: <%= link_to @location.wikipedia_link, @location.wikipedia_link %></p>
-<p>Fortalezas: <%= link_to @location.fortalezas_link, @location.fortalezas_link %></p>
-<p>Castillos.net: <%= link_to @location.castillosnet_link, @location.castillosnet_link %></p>
-<p>Collaborator: <%= @location.at_collaborator_id %></p>
-<p>A360 Model: <%= link_to @location.a360_3D_model_link, @location.a360_3D_model_link %></p>
-<p>URL: <%= link_to location_path(@location), location_path(@location) %>
+<% end %>
+
+<% if @location.wikipedia_link %>
+<p>Wikipedia:
+<%= link_to @location.wikipedia_link, @location.wikipedia_link %>
 </p>
+<% end %>
+
+<% if @location.fortalezas_link %>
+<p>Fortalezas:
+  <%= link_to @location.fortalezas_link, @location.fortalezas_link %>
+</p>
+<% end %>
+
+<% if @location.castillosnet_link %>
+<p>Castillos.net:
+<%= link_to @location.castillosnet_link, @location.castillosnet_link %>
+</p>
+<% end %>
+
+<% if @location.at_collaborator_id %>
+<p>Collaborator:<%= @location.at_collaborator_id %>
+</p>
+<% end %>
+
+<% if @location.a360_3D_model_link %>
+<p>A360 Model:
+<%= link_to @location.a360_3D_model_link, @location.a360_3D_model_link %>
+</p>
+<% end %>
+
+<p>URL: <%= link_to location_url(@location), location_path(@location) %></p>
 
 <h2>Perspective Drawings: </h2>
 <% @location.perspective_drawings.each do |perspective_drawing| %>

@@ -18,17 +18,26 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 /* MAIN */
 body {
-  font-family: sans-serif;
-  background-color: #FEFBE1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: 'Varela', sans-serif;
+  background-color: #F9F5E7;
   color: #461F14;
+  height: 100%;
+
 }
 
 h1 {
-  font-weight: normal;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: 5px 0 5px 0;
 }
 
 h3 {
-  font-weight: normal;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 3px 0 3px 0;
 }
 
 /* unvisited link */
@@ -58,7 +67,7 @@ a:active {
 header {
 	background: #fff;
 	width: 100%;
-	height: 76px;
+	height: 60px;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -76,12 +85,12 @@ header img {
 
 #logo{
 
-	margin: 7px 0 7px 20px;
+	margin: 5px 0 5px 20px;
 	float: left;
 	width: 200px;
-	height: 60px;
+	height: 50px;
 	background: url(logos/BOF_Logo.png) no-repeat center;
-  background-size: cover;
+  background-size: contain;
 	display: block;
 
 }
@@ -89,7 +98,7 @@ header img {
 nav {
 
 	float: right;
-	padding: 20px;
+	padding: 10px;
 
 }
 
@@ -134,20 +143,35 @@ header .current {
 
 #header_border {
   position: relative;
-  margin-top: 76px;
-  height: 21px;
+  margin-top: 60px;
+  height: 22px;
   background-image: url(border_narrow2.png);
   background-repeat: repeat-x;
 }
 /* END HEADER */
 
 section {
-
-	margin: 90px auto 40px;
+  display: flex;
+  flex-direction: column;
+	margin-top: 90px;
 	max-width: 980px;
 	position: relative;
-	padding: 30px
+	padding: 30px 50px 50px 50px;
 
+}
+/* FOOTER */
+
+#footer_border {
+    position: relative;
+    top: 23px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 22px;
+    background-image: url(border_narrow_footer.png);
+    background-repeat: repeat-x;
+    text-align: center;
 }
 
 /*MEDIA QUERY*/
@@ -171,11 +195,12 @@ section {
 		position: absolute;
 		padding: 20px;
 		background: #fff;
-		border: 2px solid #444;
-		right: 20px;
-		top: 60px;
-		width: 50%;
+		border: 1px solid #444;
+		right: 10px;
+		top: 48px;
+		width: 40%;
 		border-radius: 4px 0 4px 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     z-index: 100;
 
 	}
