@@ -3,6 +3,8 @@
   <head>
     <title>Book of Fortresses</title>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Varela|Yantramanav" rel="stylesheet">
+    <%= stylesheet_link_tag 'locations' %>
     <%= stylesheet_link_tag 'main' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -15,17 +17,22 @@
       <nav>
         <a href="#" id="menu-icon"></a>
         <ul>
-          <li><a class="current"><%= link_to 'HOME', root_path %></a></li>
-          <li><a><%= link_to 'LOCATIONS', locations_path %></a></li>
-          <li><a><%= link_to 'WIRED!', "http://www.dukewired.org/" %></a></li>
+          <li>
+            <a class="current"><%= link_to 'HOME', root_path %></a>
+          </li>
+          <li>
+            <a><%= link_to 'LOCATIONS', locations_path %></a>
+          </li>
+          <li>
+            <a><%= link_to 'WIRED!', "http://www.dukewired.org/" %></a>
+          </li>
         </ul>
       </nav>
-      <div id="header_border">
-
-      </div>
+      <div id="header_border"></div>
     </header>
     <section>
-    <%= yield %>
-    </secton>
+      <%= yield %>
+    </section>
+    <div id="footer_border"></div>
   </body>
 </html>
