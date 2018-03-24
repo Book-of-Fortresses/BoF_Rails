@@ -39,7 +39,7 @@ namespace :db do
 
     perspective_drawings_json.each do |record|
       at_perspective_drawings_table_id = record["id"]
-        folio_number = record["fields"].try(:[], "folio_number")
+        page_number = record["fields"].try(:[], "page_number")
 
         primary_site_name = record["fields"]["primary_site_name"]
         view_direction = record["fields"]["view_direction"]
@@ -93,7 +93,7 @@ namespace :db do
 
       PerspectiveDrawing.create!(
         "at_perspective_drawings_table_id" => at_perspective_drawings_table_id,
-        "folio_number" => folio_number,
+        "page_number" => page_number,
         "primary_site_name" => primary_site_name,
         "view_direction" => view_direction,
         "secondary_site_name" => secondary_site_name,
@@ -135,6 +135,9 @@ namespace :db do
         at_collaborator_id = collaborators.join(',')
       end
       a360_3D_model_link = record["fields"]["A360_3D_model_link"]
+      a360_3D_model_embed = record["fields"]["a360_3D_model_embed"]
+      agol_map_location_link = record["fields"]["agol_map_location_link"]
+      agol_map_location_embed = record["fields"]["agol_map_location_embed"]
       at_locations_table_time_created = record["createdTime"]
       if record["fields"]["transcript"]
       record["fields"]["transcript"].each do |image|
@@ -245,6 +248,9 @@ end
         "castillosnet_link" => castillosnet_link,
         "at_collaborator_id" => at_collaborator_id,
         "a360_3D_model_link" => a360_3D_model_link,
+        "A360_3D_model_embed" => a360_3D_model_embed,
+        "agol_map_location_link" => agol_map_location_link,
+        "agol_map_location_embed" => agol_map_location_embed,
         "at_locations_table_time_created" => at_locations_table_time_created
       )
     end
