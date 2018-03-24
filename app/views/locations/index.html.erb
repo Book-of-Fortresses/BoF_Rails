@@ -9,7 +9,7 @@
   </thead>
 
   <tbody>
-    <% @locations.each do |location| %>
+    <% @locations.sort_by{|location| location.primary_site_name}.each do |location| %>
       <tr>
         <td><%= location.primary_site_name %></td>
         <td><%= link_to 'Show', location %></td>
