@@ -24,19 +24,19 @@ body {
   font-family: 'Varela', sans-serif;
   background-color: #F9F5E7;
   color: #461F14;
-  height: 100%;
+  min-height: 100vh;
 
 }
 
 h1 {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 2em;
   margin: 5px 0 5px 0;
 }
 
 h3 {
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.5em;
   margin: 3px 0 3px 0;
 }
 
@@ -61,14 +61,13 @@ a:active {
 }
 
 
-
 /* HEADER */
 
 header {
 	background: #fff;
 	width: 100%;
 	height: 60px;
-	position: fixed;
+	/* position: fixed; */
 	top: 0;
 	left: 0;
 	z-index: 100;
@@ -84,7 +83,6 @@ header img {
 }
 
 #logo{
-
 	margin: 5px 0 5px 20px;
 	float: left;
 	width: 200px;
@@ -92,41 +90,31 @@ header img {
 	background: url(logos/BOF_Logo.png) no-repeat center;
   background-size: contain;
 	display: block;
-
 }
 
 nav {
-
 	float: right;
 	padding: 10px;
-
 }
 
 #menu-icon {
-
 	display: hidden;
 	width: 40px;
 	height: 40px;
 	background-image: url(menu/menu-icon.png);
   background-size: contain;
-
 }
 
 a:hover#menu-icon {
-
 	background-color: #7793A1;
 	border-radius: 4px 4px 0 0;
-
 }
 
 header ul {
-
 	list-style: none;
-
 }
 
 header li {
-
 	display: inline-block;
 	float: left;
 	padding: 10px;
@@ -137,28 +125,36 @@ header li a {
 }
 
 header .current {
-
 	color: #2262AD;
 }
 
 #header_border {
   position: relative;
-  margin-top: 60px;
   height: 22px;
+  width: 100vw;
   background-image: url(border_narrow2.png);
   background-repeat: repeat-x;
 }
 /* END HEADER */
+#site_wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#content_wrapper {
+}
 
 section {
   display: flex;
   flex-direction: column;
-	margin-top: 90px;
-	max-width: 980px;
+  align-items: flex-start;
+	margin-top: 40px;
+	width: 90vw;
 	position: relative;
-	padding: 30px 50px 50px 50px;
-
 }
+
 /* FOOTER */
 
 #footer_border {
