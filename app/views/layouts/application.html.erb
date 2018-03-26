@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <div id="site_wrapper">
     <header>
       <a href="<%= root_path %>" id="logo"></a>
       <nav>
@@ -28,11 +29,16 @@
           </li>
         </ul>
       </nav>
-      <div id="header_border"></div>
     </header>
-    <section>
-      <%= yield %>
-    </section>
+    <div id="header_border"></div>
+    <div id="content_wrapper">
+      <section>
+        <%= yield %>
+      </section>
+    </div>
+
+    </div>
     <div id="footer_border"></div>
+
   </body>
 </html>
