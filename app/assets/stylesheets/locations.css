@@ -1,0 +1,105 @@
+
+
+/* Index Page */
+#locations_wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+tbody {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 70vh;
+  width: 60vw;
+}
+
+tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 1.5em;
+}
+
+#locations_map {
+  width: 25vw;
+}
+
+/* Individual Page */
+
+#location_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#location_first_column {
+  display: flex;
+  flex-direction: column;
+  width: 39%;
+  min-width: 350px;
+}
+
+#location_first_column_first_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#location_second_column {
+  display: flex;
+  flex-direction: column;
+  width: 59%;
+}
+
+#location_metadata {
+  width: 39%;
+  min-width: 200px;
+}
+
+#location_plan {
+  width: 59%;
+  min-width: 300px;
+  border: solid 1px dimgray;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#location_plan img {
+  width: 100%;
+  height: auto;
+}
+
+#location_image_gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.location_image_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 10vw;
+  padding: 5px;
+  border: solid 1px dimgray;
+  border-radius: 5px;
+  max-height: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.openseadragon {
+  display: flex;
+  align-items: flex-start;
+  flex-basis: 800px;
+  height: 70vh;
+  max-height: 700px;
+}

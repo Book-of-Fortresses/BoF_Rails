@@ -1,111 +1,76 @@
 <h1><%= @location.primary_site_name %></h1>
+<br/>
+<div id="location_wrapper">
+  <div id="location_first_column">
+    <div id="location_first_column_first_row">
+    <div id="location_metadata">
+      <% if @location.wikipedia_link %>
+        <p><%= link_to 'Wikipedia', @location.wikipedia_link, target: :_blank %></p>
+      <% end %>
+      <% if @location.fortalezas_link %>
+        <p><%= link_to 'Fortalezas.org', @location.fortalezas_link, target: :_blank %></p>
+      <% end %>
+      <% if @location.castillosnet_link %>
+        <p><%= link_to 'Castillos.net', @location.castillosnet_link, target: :_blank %></p>
+      <% end %>
+      <% if @location.at_collaborator_id %>
+      <p>Collaborator:
+        <%= Collaborator.find_by(at_collaborator_id: @location.at_collaborator_id).name %>
+      </p>
+      <% end %>
+    </div><!--location metadata -->
+    <div id="location_plan">
+      <% if @location.images.detect{|i| i.image_category == "plan"} %>
+      <img src="<%= @location.images.detect{|i| i.image_category == "plan"}.url %>"></img>
+      <% else %>
+      <img src="<%= image_path 'plan_unavailable.png' %>"></img>
+      <% end %>
+    </div>
+    </div>
+    <div id="location_image_gallery">
+      <% @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}.each do |image| %>
+      <div class="location_image_card">
+        <div class="location_image_card_thumbnail">
+          <img src="<%= image.large_thumbnail_url %>" width="200px" height="auto"></img>
+        </div>
+        <div class="location_image_card_metadata">
+          <% if image.view_direction %>
+          <% if image.source == "1642_watercolor" %>
+          <br/>
+          <p>
+            1642 Watercolor
+          </p>
+          <% end %>
+          <p>
+            View:
+            <%= image.view_direction %>
+          </p>
+          <% end %>
+          <% if image.image_category == "satellite image" %>
+          <br/>
+          <p>
+            Satellite Image
+          </p>
+          <% end %>
+        </div>
 
-<p>Postgres id: <%= @location.id %></p>
-<p>Airtable id: <%= @location.at_locations_table_id %></p>
-<p>Location id: <%= @location.location_id %></p>
-<p>Latitude: <%= @location.latitude %></p>
-<p>Longitude: <%= @location.longitude %></p>
-<p>Wikipedia: <%= @location.wikipedia_link %></p>
-<p>Fortalezas: <%= @location.fortalezas_link %></p>
-<p>Castillos.net: <%= u@location.castillosnet_link %></p>
-<p>Collaborator: <%= @location.at_collaborator_id %></p>
-<p>A360 Model: <%= @location.a360_3D_model_link %></p>
-<p>Airtable record time created: <%= @location.at_locations_table_time_created %></p>
-<p>Postgres time created: <%= @location.created_at %></p>
-<p>Postgres time updated: <%= @location.updated_at %></p>
-<p>Lonlat: <%= @location.lonlat %></p>
-<p>URL: <%= link_to location_path(@location), location_path(@location) %>
-</p>
 
-<h2>Perspective Drawings: </h2>
-<% @location.perspective_drawings.each do |perspective_drawing| %>
-<p>Postgres id: <%= perspective_drawing.id %></p>
-<p>Airtable id: <%= perspective_drawing.at_perspective_drawings_table_id %></p>
-<p>Folio number: <%= perspective_drawing.folio_number %></p>
-<p>View direction: <%= perspective_drawing.view_direction %></p>
-<p>Secondary site name: <%= perspective_drawing.secondary_site_name %></p>
-<p>Secondary site kingdom: <%= perspective_drawing.secondary_site_kingdom %></p>
-<p>Number of watchtowers: <%= perspective_drawing.number_of_watchtowers %></p>
-<p>Exterior features: <%= perspective_drawing.exterior_features %></p>
-<p>Fortress features: <%= perspective_drawing.fortress_features %></p>
-<% end %>
-<h2>Images: </h2>
-<% @location.images.each_with_index do |image, index| %>
-<h3>Image number: <%= index +1  %></h3>
-<div id="openseadragon1" style="width: 800px; height: 600px;"></div>
+      </div>
+      <% end %>
+    </div> <!-- image gallery -->
+  </div> <!--location first column -->
+  <div id="location_second_column">
+    <div id="openseadragon" class="openseadragon">
+    </div>
+  </div><!--location second column -->
+</div> <!--location_wrapper -->
+
 <script type="text/javascript">
-    var viewer = OpenSeadragon({
-        id: "openseadragon1",
-        prefixUrl: "",
-        navImages: {
-          zoomIn: {
-            REST:     '<%= image_path 'zoomin_rest.png' %>',
-            GROUP:    '<%= image_path 'zoomin_grouphover.png' %>',
-            HOVER:    '<%= image_path 'zoomin_hover.png' %>',
-            DOWN:     '<%= image_path 'zoomin_pressed.png' %>'
-          },
-          zoomOut: {
-              REST:   '<%= image_path 'zoomout_rest.png' %>',
-              GROUP:  '<%= image_path 'zoomout_grouphover.png' %>',
-              HOVER:  '<%= image_path 'zoomout_hover.png' %>',
-              DOWN:   '<%= image_path 'zoomout_pressed.png' %>'
-          },
-          home: {
-              REST:   '<%= image_path 'home_rest.png' %>',
-              GROUP:  '<%= image_path 'home_grouphover.png' %>',
-              HOVER:  '<%= image_path 'home_hover.png' %>',
-              DOWN:   '<%= image_path 'home_pressed.png' %>'
-          },
-          fullpage: {
-              REST:   '<%= image_path 'fullpage_rest.png' %>',
-              GROUP:  '<%= image_path 'fullpage_grouphover.png' %>',
-              HOVER:  '<%= image_path 'fullpage_hover.png' %>',
-              DOWN:   '<%= image_path 'fullpage_pressed.png' %>'
-          },
-          rotateleft: {
-              REST:   '<%= image_path 'rotateleft_rest.png' %>',
-              GROUP:  '<%= image_path 'rotateleft_grouphover.png' %>',
-              HOVER:  '<%= image_path 'rotateleft_hover.png' %>',
-              DOWN:   '<%= image_path 'rotateleft_pressed.png' %>'
-          },
-          rotateright: {
-              REST:   '<%= image_path 'rotateright_rest.png' %>',
-              GROUP:  '<%= image_path 'rotateright_grouphover.png' %>',
-              HOVER:  '<%= image_path 'rotateright_hover.png' %>',
-              DOWN:   '<%= image_path 'rotateright_pressed.png' %>'
-          },
-          previous: {
-              REST:   '<%= image_path 'previous_rest.png' %>',
-              GROUP:  '<%= image_path 'previous_grouphover.png' %>',
-              HOVER:  '<%= image_path 'previous_hover.png' %>',
-              DOWN:   '<%= image_path 'previous_pressed.png' %>'
-          },
-          next: {
-              REST:   '<%= image_path 'next_rest.png' %>',
-              GROUP:  '<%= image_path 'next_grouphover.png' %>',
-              HOVER:  '<%= image_path 'next_hover.png' %>',
-              DOWN:   '<%= image_path 'next_pressed.png' %>'
-          }
-        },
-        tileSources: {
-        type: 'image',
-        url:  '<%= image.url %>'
+  var viewer = OpenSeadragon({
+    id: "openseadragon",
+    tileSources: {
+      type: 'image',
+      url: '<%= @location.images.sort_by{|image| image.image_category}[0].url %>'
     }
-    });
+  });
 </script>
-<p>Postgres id: <%= image.id %></p>
-<p>Airtable id: <%= image.at_image_id %></p>
-<p>Url: <%= image.url %></p>
-<p>filename: <%= image.filename %></p>
-<p>size: <%= image.size %></p>
-<p>small thumbnail url: <%= image.small_thumbnail_url %></p>
-<p>small thumbnail width: <%= image.small_thumbnail_width %></p>
-<p>small thumbnail height: <%= image.small_thumbnail_height %></p>
-<p>large thumbnail url: <%= image.large_thumbnail_url %></p>
-<p>large thumbnail width: <%= image.large_thumbnail_width %></p>
-<p>large thumbnail height: <%= image.large_thumbnail_height %></p>
-<p>image type: <%= image.image_type %></p>
-<p>image category: <%= image.image_category %></p>
-<% end %>
-
-<%= link_to 'Back', locations_path %>
