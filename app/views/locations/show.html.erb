@@ -67,6 +67,10 @@
     <div id="openseadragon_image_0" class="openseadragon" style="display: none;"></div>
     <div id="openseadragon_image_1" class="openseadragon" style="display: none;"></div>
     <div id="openseadragon_image_2" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_3" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_4" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_5" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_6" class="openseadragon" style="display: none;"></div>
   </div><!--location second column -->
 </div> <!--location_wrapper -->
 
@@ -136,7 +140,11 @@ plan_drawing.style.border = "solid 2px red";
     id: "openseadragon_image_0",
     tileSources: {
       type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0] %>
       url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% else %>
+      url: '<%=  @location.images.detect{|i| i.image_category == "plan"}.url %>'
+      <% end %>
     }
   });
 
@@ -144,7 +152,11 @@ plan_drawing.style.border = "solid 2px red";
     id: "openseadragon_image_1",
     tileSources: {
       type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[1] %>
       url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[1].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
     }
   });
 
@@ -152,7 +164,59 @@ plan_drawing.style.border = "solid 2px red";
     id: "openseadragon_image_2",
     tileSources: {
       type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[2] %>
       url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[2].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_3",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[3] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[3].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_4",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[4] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[4].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_5",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[5] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[5].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_6",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[6] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[6].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
     }
   });
 
