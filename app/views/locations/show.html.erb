@@ -1,5 +1,7 @@
 <h1><%= @location.primary_site_name %></h1>
 <br/>
+
+
 <div id="location_wrapper">
   <div id="location_first_column">
     <div id="location_first_column_first_row">
@@ -28,8 +30,8 @@
     </div>
     </div>
     <div id="location_image_gallery">
-      <% @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}.each do |image| %>
-      <div class="location_image_card">
+      <% @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}.each_with_index do |image, index| %>
+      <div class="location_image_card" id="image_<%= index %>">
         <div class="location_image_card_thumbnail">
           <img src="<%= image.large_thumbnail_url %>" width="200px" height="auto"></img>
         </div>
@@ -60,12 +62,60 @@
     </div> <!-- image gallery -->
   </div> <!--location first column -->
   <div id="location_second_column">
-    <div id="openseadragon" class="openseadragon">
-    </div>
+    <div id="openseadragon" class="openseadragon" style="display: "";"></div>
+    <div id="openseadragon_plan" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_0" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_1" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_2" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_3" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_4" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_5" class="openseadragon" style="display: none;"></div>
+    <div id="openseadragon_image_6" class="openseadragon" style="display: none;"></div>
   </div><!--location second column -->
 </div> <!--location_wrapper -->
 
 <script type="text/javascript">
+
+var initial_viewer = document.getElementById('openseadragon');
+var initial_image = document.getElementById('image_0');
+var plan_drawing = document.getElementById('location_plan');
+var image_cards = document.querySelectorAll(".location_image_card");
+  initial_viewer.style.display = "";
+  console.log(initial_image);
+
+
+function add_listeners(){
+  plan_drawing.addEventListener('click', load_plan);
+  image_cards.forEach(function(card) {
+  card.addEventListener('click',load_image);
+});
+  initial_image.style.border = "solid 2px red";
+}
+
+function hide_all(){
+  [].forEach.call(document.querySelectorAll('.openseadragon'), function (e) {
+    e.style.display = 'none';
+  });
+  image_cards.forEach(function(card){
+    card.style.border = "solid 1px dimgray";
+  });
+  document.getElementById('location_plan').style.border = "solid 1px dimgray";
+}
+
+function load_image(){
+  hide_all();
+  openseadragon_image = document.getElementById('openseadragon_'+this.id);
+  openseadragon_image.style.display = "";
+  this.style.border = "solid 2px red";
+}
+
+function load_plan(){
+  hide_all();
+let openseadragon_plan = document.getElementById('openseadragon_plan');
+openseadragon_plan.style.display = "";
+plan_drawing.style.border = "solid 2px red";
+}
+
   var viewer = OpenSeadragon({
     id: "openseadragon",
     tileSources: {
@@ -73,4 +123,104 @@
       url: '<%= @location.images.sort_by{|image| image.image_category}[0].url %>'
     }
   });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_plan",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.detect{|i| i.image_category == "plan"} %>
+      url: '<%=  @location.images.detect{|i| i.image_category == "plan"}.url %>'
+      <% else %>
+      url: '<%= image_path 'plan_unavailable.png' %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_0",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% else %>
+      url: '<%=  @location.images.detect{|i| i.image_category == "plan"}.url %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_1",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[1] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[1].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_2",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[2] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[2].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_3",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[3] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[3].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_4",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[4] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[4].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_5",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[5] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[5].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
+    }
+  });
+
+  var viewer = OpenSeadragon({
+    id: "openseadragon_image_6",
+    tileSources: {
+      type: 'image',
+      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[6] %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[6].url %>'
+      <% else %>
+      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
+      <% end %>
+    }
+  });
+
+
+
+  add_listeners();
 </script>

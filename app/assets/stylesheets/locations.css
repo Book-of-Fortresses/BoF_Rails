@@ -40,6 +40,7 @@ tr {
   flex-direction: column;
   width: 39%;
   min-width: 350px;
+  align-items: flex-start;
 }
 
 #location_first_column_first_row {
@@ -53,11 +54,14 @@ tr {
   display: flex;
   flex-direction: column;
   width: 59%;
+  justify-content: flex-start;
 }
 
 #location_metadata {
   width: 39%;
   min-width: 200px;
+  margin-bottom: 10px;
+  justify-content: flex-start;
 }
 
 #location_plan {
