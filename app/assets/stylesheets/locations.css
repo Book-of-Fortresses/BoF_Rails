@@ -3,15 +3,18 @@
 /* Index Page */
 #locations_wrapper {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 tbody {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 70vh;
-  width: 60vw;
+  max-height: 60vh;
+  width: 50vw;
 }
 
 tr {
@@ -22,7 +25,7 @@ tr {
 }
 
 #locations_map {
-  width: 25vw;
+  min-width: 500px;
 }
 
 /* Individual Page */
@@ -46,7 +49,7 @@ tr {
 #location_first_column_first_row {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -58,14 +61,14 @@ tr {
 }
 
 #location_metadata {
-  width: 39%;
+  width: 37%;
   min-width: 200px;
   margin-bottom: 10px;
   justify-content: flex-start;
 }
 
 #location_plan {
-  width: 59%;
+  width: 57%;
   min-width: 300px;
   border: solid 1px dimgray;
   border-radius: 5px;
@@ -76,16 +79,22 @@ tr {
   width: 100%;
   height: auto;
 }
+#location_image_gallery_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
 
 #location_image_gallery {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin-top: 10px;
   flex-grow: 1;
   flex-shrink: 1;
   width: 100%;
-  margin-top: 20px;
 }
 
 .location_image_card {
@@ -94,6 +103,7 @@ tr {
   align-items: center;
   flex-basis: 10vw;
   padding: 5px;
+  margin: 3px 3px 10px 3px;
   border: solid 1px dimgray;
   border-radius: 5px;
   max-height: 200px;
