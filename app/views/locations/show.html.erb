@@ -65,7 +65,6 @@
     </div>
     <div id="openseadragon_plan" class="openseadragon" style="display: none;"></div>
     <div id="openseadragon" class="openseadragon" style="display: "";"></div>
-
     <div id="openseadragon_image_0" class="openseadragon" style="display: none;"></div>
     <div id="openseadragon_image_1" class="openseadragon" style="display: none;"></div>
     <div id="openseadragon_image_2" class="openseadragon" style="display: none;"></div>
@@ -120,6 +119,10 @@ function load_image(){
 function load_model(){
   hide_all();
 let model_viewer = document.getElementById('3d_model_iframe');
+let model_viewer_iframe = model_viewer.getElementsByTagName("iframe")[0];
+console.log("iframe element?:" + model_viewer_iframe);
+model_viewer_iframe.style.width = "100%";
+model_viewer_iframe.style.height = "100%";
 model_viewer.style.display = "";
 model.style.border = "solid 2px red";
 }
