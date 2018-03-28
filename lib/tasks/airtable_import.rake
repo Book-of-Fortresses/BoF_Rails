@@ -31,9 +31,17 @@ namespace :db do
   end
 
   desc "import perspective drawings from airtable"
+  offset = ''
   task :load_perspective_drawings => [:environment] do
-    url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Perspective_Drawings/'
+    url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Perspective_Drawings/?offset='+offset
     response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
+
+    if response.parsed_response["offset"]
+    offset = response.parsed_response["offset"]
+    else
+    offset = ''
+    end
+    puts "offset:" + offset
 
     perspective_drawings_json = response.parsed_response["records"].to_a
 
@@ -103,6 +111,12 @@ namespace :db do
             "large_thumbnail_height" => large_thumbnail_height,
           )
         end
+    end
+
+    if offset != ''
+      Rake::Task["db:load_perspective_drawings"].execute
+    else
+      puts "finished loading all the drawings"
     end
   end
 
