@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BoFRails</title>
+    <title>Book of Fortresses</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Varela|Yantramanav" rel="stylesheet">
+    <%= stylesheet_link_tag 'locations' %>
+    <%= stylesheet_link_tag 'main' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--[if IE]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   </head>
 
   <body>
-    <%= yield %>
+    <div id="site_wrapper">
+    <header>
+      <a href="<%= root_path %>" id="logo"></a>
+      <nav>
+        <a href="#" id="menu-icon"></a>
+        <ul>
+          <li>
+            <a class="current"><%= link_to 'HOME', root_path %></a>
+          </li>
+          <li>
+            <a><%= link_to 'LOCATIONS', locations_path %></a>
+          </li>
+          <li>
+            <a><%= link_to 'WIRED!', "http://www.dukewired.org/" %></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div id="header_border"></div>
+    <div id="content_wrapper">
+      <section>
+        <%= yield %>
+      </section>
+    </div>
+
+    </div>
+    <div id="footer_border"></div>
+
   </body>
 </html>

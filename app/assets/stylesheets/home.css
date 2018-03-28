@@ -1,0 +1,13 @@
+#home_row2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#home_row2_left {
+  width: 75%;
+}
+
+#collaborator_list {
+  width: 25%;
+}
