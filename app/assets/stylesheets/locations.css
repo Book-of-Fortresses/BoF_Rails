@@ -3,15 +3,20 @@
 /* Index Page */
 #locations_wrapper {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
+
+
 
 tbody {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 70vh;
-  width: 60vw;
+  max-height: 60vh;
+  width: 50vw;
 }
 
 tr {
@@ -22,7 +27,7 @@ tr {
 }
 
 #locations_map {
-  width: 25vw;
+  min-width: 500px;
 }
 
 /* Individual Page */
