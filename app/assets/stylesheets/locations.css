@@ -79,6 +79,7 @@ tr {
   width: 100%;
   height: auto;
 }
+
 #location_image_gallery_wrapper {
   display: flex;
   flex-direction: row;

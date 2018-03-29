@@ -25,7 +25,6 @@ body {
   background-color: #F9F5E7;
   color: #461F14;
   min-height: 100vh;
-
 }
 
 h1 {
@@ -82,7 +81,7 @@ header img {
 	width: 100%;
 }
 
-#logo{
+#logo {
 	margin: 5px 0 5px 20px;
 	float: left;
 	width: 200px;
@@ -135,6 +134,7 @@ header .current {
   background-image: url(border_narrow2.png);
   background-repeat: repeat-x;
 }
+
 /* END HEADER */
 #site_wrapper {
   min-height: 100vh;
@@ -174,19 +174,14 @@ section {
 @media only screen and (max-width : 640px) {
 
 	header {
-
 		position: absolute;
-
 	}
 
 	#menu-icon {
-
 		display:inline-block;
-
 	}
 
 	nav ul, nav:active ul {
-
 		display: none;
 		position: absolute;
 		padding: 20px;
@@ -198,20 +193,16 @@ section {
 		border-radius: 4px 0 4px 4px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     z-index: 100;
-
 	}
 
 	nav li {
-
 		text-align: center;
 		width: 100%;
 		padding: 10px 0;
 		margin: 0;
-
 	}
 
 	nav:hover ul {
-
 		display: block;
-
 	}
+}
