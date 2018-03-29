@@ -33,7 +33,7 @@ namespace :db do
   desc "import perspective drawings from airtable"
   offset = ''
   task :load_perspective_drawings => [:environment] do
-    url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Perspective_Drawings/?offset='+offset
+    url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Images/?offset='+offset
     response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
 
     if response.parsed_response["offset"]
@@ -130,7 +130,7 @@ namespace :db do
     locations_json.each do |record|
       slug = record["fields"]["slug"]
       at_locations_table_id = record["id"]
-      location_id = record["fields"]["id_number"]
+      itinerary_order = record["fields"]["itinerary_order"]
       primary_site_name = record["fields"]["primary_site_name"]
       latitude = record["fields"]["latitude"]
       longitude = record["fields"]["longitude"]
@@ -218,7 +218,7 @@ end
 
       Location.create!(
         "at_locations_table_id" => at_locations_table_id,
-        "location_id" => location_id,
+        "itinerary_order" => itinerary_order,
         "primary_site_name" => primary_site_name,
         "slug" => slug,
         "latitude" => latitude,
