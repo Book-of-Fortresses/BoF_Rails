@@ -48,10 +48,10 @@ namespace :db do
     perspective_drawings_json.each do |record|
       at_perspective_drawings_table_id = record["id"]
         page_number = record["fields"].try(:[], "page_number")
-
+        slug = record["fields"]["slug"]
         primary_site_name = record["fields"]["primary_site_name"]
         view_direction = record["fields"]["view_direction"]
-        image_category = record["fields"]["category"].join(", ")
+        image_category = record["fields"]["category"]
         source = record["fields"]["source"]
         secondary_site_name = record["fields"]["secondary_site_name"]
         secondary_site_kingdom = record["fields"]["secondary_site_kingdom"]
@@ -85,6 +85,7 @@ namespace :db do
 
           Image.create!(
             "at_image_id" => at_image_id,
+            "slug" => slug,
             "at_perspective_drawings_table_id" => at_perspective_drawings_table_id,
             "at_locations_table_id" => at_locations_table_id,
             "url" => url,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329010701) do
+ActiveRecord::Schema.define(version: 20180330202616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180329010701) do
     t.string "at_perspective_drawings_table_time_created"
     t.integer "page_number"
     t.string "source"
+    t.integer "slug"
   end
 
   create_table "locations", force: :cascade do |t|
