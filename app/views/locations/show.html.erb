@@ -1,11 +1,18 @@
-<h1><%= @location.primary_site_name %></h1>
+<h1 id='title'><%= @location.primary_site_name %></h1>
 <br/>
-
-
 <div id="location_wrapper">
   <div id="location_first_column">
     <div id="location_first_column_first_row">
     <div id="location_metadata">
+      <% if @location.itinerary_order %>
+        <p>Itinerary Order: <%= @location.itinerary_order %></p>
+      <% end %>
+      <% if @location.latitude %>
+        <p>Latitude: <%= @location.latitude %></p>
+      <% end %>
+      <% if @location.longitude %>
+        <p>Latitude: <%= @location.longitude %></p>
+      <% end %>
       <% if @location.wikipedia_link %>
         <p><%= link_to 'Wikipedia', @location.wikipedia_link, target: :_blank %></p>
       <% end %>
@@ -13,11 +20,11 @@
         <p><%= link_to 'Fortalezas.org', @location.fortalezas_link, target: :_blank %></p>
       <% end %>
       <% if @location.castillosnet_link %>
-        <p><%= link_to 'Castillos.net', @location.castillosnet_link, target: :_blank %></p>
+        <p ><%= link_to 'Castillos.net', @location.castillosnet_link, target: :_blank %></p>
       <% end %>
       <% if @location.at_collaborator_id %>
-      <p>Collaborator:
-        <%= Collaborator.find_by(at_collaborator_id: @location.at_collaborator_id).name %>
+      <p>Collaborator: <div id="collaborator">
+        <%= Collaborator.find_by(at_collaborator_id: @location.at_collaborator_id).name %></div>
       </p>
       <% end %>
     </div><!--location metadata -->
@@ -30,8 +37,6 @@
     </div>
     </div>
     <div id="location_image_gallery_wrapper">
-
-
     <div id="location_image_gallery">
       <% if @location.a360_3D_model_embed %>
       <div class="location_image_card" id="3d_model">
@@ -51,6 +56,9 @@
           <% if image.source == "1642_watercolor" %>
           <p>1642 Watercolor</p>
           <% end %>
+          <% if image.source == "lisbon_codex" %>
+          <p>Lisbon Codex</p>
+          <% end %>
           <% end %>
           <% if image.image_category == "satellite image" %>
           <p>Satellite Image</p>
@@ -69,7 +77,7 @@
       <% end %>
     </div>
     <div id="openseadragon_plan" class="openseadragon" style="display: none;"></div>
-    <div id="openseadragon" class="openseadragon" style="display: "";"></div>
+    <div id="openseadragon" class="openseadragon" style="display: none;"></div>
     <div id="openseadragon_image_0" class="openseadragon" style="display: none;"></div>
     <div id="openseadragon_image_1" class="openseadragon" style="display: none;"></div>
     <div id="openseadragon_image_2" class="openseadragon" style="display: none;"></div>
@@ -77,31 +85,40 @@
     <div id="openseadragon_image_4" class="openseadragon" style="display: none;"></div>
     <div id="openseadragon_image_5" class="openseadragon" style="display: none;"></div>
     <div id="openseadragon_image_6" class="openseadragon" style="display: none;"></div>
+    <br/>
+    <div id="current_image_metadata"></div>
   </div><!--location second column -->
 </div> <!--location_wrapper -->
 
 <script type="text/javascript">
 
-var initial_viewer = document.getElementById('openseadragon');
-var initial_image = document.getElementById('image_0');
-var plan_drawing = document.getElementById('location_plan');
-var model = document.getElementById('3d_model');
-var image_cards = document.querySelectorAll(".location_image_card");
-  initial_viewer.style.display = "";
-  console.log(initial_image);
 
+var model = document.getElementById('3d_model');
+
+var plan_drawing = document.getElementById('location_plan');
+var image_cards = document.querySelectorAll(".location_image_card");
+var viewer_metadata = document.getElementById('current_image_metadata');
+if (model) {
+  load_model();
+}
+else {
+  var initial_image = document.getElementById('image_0');
+  var initial_viewer = document.getElementById('openseadragon');
+  initial_viewer.style.display = "";
+  initial_image.style.border = "solid 2px red";
+}
 
 function add_listeners(){
   plan_drawing.addEventListener('click', load_plan);
   image_cards.forEach(function(card) {
     if (card.id != '3d_model') {
-  card.addEventListener('click',load_image);
-  }
-});
+      card.addEventListener('click',load_image);
+    }
+  });
     if (model) {
-  model.addEventListener('click',load_model);
-};
-  initial_image.style.border = "solid 2px red";
+      model.addEventListener('click',load_model);
+    };
+
 }
 
 function hide_all(){
@@ -112,6 +129,7 @@ function hide_all(){
     card.style.border = "solid 1px dimgray";
   });
   document.getElementById('location_plan').style.border = "solid 1px dimgray";
+  viewer_metadata.innerHTML = '';
 }
 
 function load_image(){
@@ -119,17 +137,26 @@ function load_image(){
   openseadragon_image = document.getElementById('openseadragon_'+this.id);
   openseadragon_image.style.display = "";
   this.style.border = "solid 2px red";
+  card_metadata = this.querySelector('.location_image_card_metadata');
+  this.querySelectorAll('p').forEach(function(p) {
+    x = p.cloneNode(true);
+    viewer_metadata.appendChild(x);
+});
 }
 
 function load_model(){
   hide_all();
 let model_viewer = document.getElementById('3d_model_iframe');
 let model_viewer_iframe = model_viewer.getElementsByTagName("iframe")[0];
-console.log("iframe element?:" + model_viewer_iframe);
 model_viewer_iframe.style.width = "100%";
 model_viewer_iframe.style.height = "100%";
 model_viewer.style.display = "";
 model.style.border = "solid 2px red";
+collaborator = document.getElementById('collaborator').innerHTML;
+model_metadata = document.createTextNode("Modeled by: " + collaborator);
+model_p = document.createElement('p');
+model_p.appendChild(model_metadata);
+viewer_metadata.appendChild(model_p);
 }
 
 function load_plan(){
@@ -137,6 +164,11 @@ function load_plan(){
 let openseadragon_plan = document.getElementById('openseadragon_plan');
 openseadragon_plan.style.display = "";
 plan_drawing.style.border = "solid 2px red";
+location_name = document.getElementById('title').innerHTML
+plan_metadata = document.createTextNode(location_name + " Plan");
+plan_p = document.createElement('p');
+plan_p.appendChild(plan_metadata);
+viewer_metadata.appendChild(plan_p);
 }
 
   var viewer = OpenSeadragon({
