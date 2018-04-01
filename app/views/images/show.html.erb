@@ -1,4 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div id="image_wrapper">
+  <div id="image_column_one">
+    <h1><%= @image.location.primary_site_name %></h1>
+    <h2>Source: <%= @image.source %></h2>
+    <h2>View: <%= @image.view_direction %></h2>
+    <% if @image.fortress_features %>
+      <h2>Suggested fortress tags: <%= @image.fortress_features %></h2>
+    <% end %>
+    <% if @image.exterior_features %>
+      <h2>Suggested exterior tags: <%= @image.exterior_features %></h2>
+    <% end %>
+  </div>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+    <div id="annotatable_image_wrapper">
+      <img src='<%= @image.url %>' class="annotatable"></img>
+    </div>
+
+</div>
+
+<script>
+// Logs newly-created annotations to the console
+anno.addHandler('onAnnotationCreated', function(annotation) {
+  console.log(annotation.text);
+});
+</script>
+
+<!-- <button onclick="anno.activateSelector();" href="#">
+  ADD ANNOTATION
+</button>
+
+<div id="annotorious_wrapper">
+  <div id="annotorious" class="openseadragon"></div>
+</div>
+
+<script type="text/javascript">
+
+
+var viewer = OpenSeadragon({
+  id: "annotorious",
+  showNavigator: false,
+  tileSources: {
+    type: 'image',
+    url: '<%= @image.url %>'
+  }
+});
+
+anno.makeAnnotatable(viewer);
+
+</script> -->
