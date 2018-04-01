@@ -1,3 +1,24 @@
-// Place all the styles related to the Images controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#image_wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#image_column_one {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+#annotatable_image_wrapper {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  width: 75%
+}
+
+#annotatable_image_wrapper img {
+  height: 95vh;
+  width: auto;
+}

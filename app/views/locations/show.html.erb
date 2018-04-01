@@ -41,7 +41,7 @@
       <% if @location.a360_3D_model_embed %>
       <div class="location_image_card" id="3d_model">
         <div class="location_image_card_thumbnail">
-          <img src="<%= image_path '3d_model.png' %>" width="200px" height="auto"></img>
+          <img src="<%= asset_path '3d_model.png' %>" width="200px" height="auto"></img>
         </div>
       </div>
       <% end %>
@@ -56,8 +56,8 @@
           <% if image.source == "1642_watercolor" %>
           <p>1642 Watercolor</p>
           <% end %>
-          <% if image.source == "lisbon_codex" %>
-          <p>Lisbon Codex</p>
+          <% if image.source == "Codex A" %>
+          <p>Codex A</p>
           <% end %>
           <% end %>
           <% if image.image_category == "satellite image" %>
@@ -274,8 +274,6 @@ viewer_metadata.appendChild(plan_p);
       <% end %>
     }
   });
-
-
 
   add_listeners();
 </script>
