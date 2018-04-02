@@ -25,6 +25,7 @@ body {
   background-color: #F9F5E7;
   color: #461F14;
   min-height: 100vh;
+  max-width: 100%;
 }
 
 h1 {
@@ -33,9 +34,15 @@ h1 {
   margin: 5px 0 5px 0;
 }
 
-h3 {
+h2 {
   font-weight: bold;
   font-size: 1.5em;
+  margin: 3px 0 3px 0;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 1.3em;
   margin: 3px 0 3px 0;
 }
 
@@ -62,19 +69,31 @@ a:active {
 
 /* HEADER */
 
+.header_footer {
+	background: #442D22;
+	width: 100vw;
+  max-width: 100%;
+  color: #461F14;
+}
+
 header {
-	background: #fff;
-	width: 100%;
-	height: 60px;
+  height: 60px;
 	/* position: fixed; */
 	top: 0;
 	left: 0;
 	z-index: 100;
-  color: #461F14;
 }
 
 header a {
   text-decoration: none;
+}
+
+header a:link {
+  color: #F9F5E7;
+}
+
+header a:visited {
+  color: #F9F5E7;
 }
 
 header img {
@@ -86,7 +105,7 @@ header img {
 	float: left;
 	width: 200px;
 	height: 50px;
-	background: url('logos/BOF_Logo.png') no-repeat center;
+	background: url('logos/Logo_4-1-2018.png') no-repeat center;
   background-size: contain;
 	display: block;
 }
@@ -127,12 +146,21 @@ header .current {
 	color: #2262AD;
 }
 
-#header_border {
+/* #header_border {
   position: relative;
   height: 22px;
   width: 100vw;
+  max-width: 100%;
   background-image: url(border_narrow2.png);
   background-repeat: repeat-x;
+} */
+
+.top_bottom_border {
+  position: relative;
+  height: 7px;
+  width: 100vw;
+  max-width: 100%;
+  background-color: #577C92;
 }
 
 /* END HEADER */
@@ -141,9 +169,6 @@ header .current {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-#content_wrapper {
 }
 
 section {
@@ -157,17 +182,28 @@ section {
 
 /* FOOTER */
 
-#footer_border {
-    position: relative;
-    top: 23px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    height: 22px;
-    background-image: url(border_narrow_footer.png);
-    background-repeat: repeat-x;
-    text-align: center;
+footer {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+footer ul {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  justify-content: space-evenly;
+}
+
+footer ul li a:link {
+  color: #F9F5E7;
+  text-decoration: none;
+}
+
+footer ul li a:visited {
+  color: #F9F5E7;
+  text-decoration: none;
 }
 
 /*MEDIA QUERY*/
