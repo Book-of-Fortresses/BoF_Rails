@@ -1,13 +1,78 @@
+#home_sites_gallery_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+#home_sites_gallery {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.home_site_card {
+ display: flex;
+ flex-direction: column;
+ width: 30%;
+ align-items: center;
+
+}
+
+#home_site_1 {
+  background-image: url( 'castro_marim_watercolor.png');
+}
+
+#home_site_2 {
+  background-image: url( 'alcoutim_codexa.jpg');
+}
+
+#home_site_3 {
+  background-image: url( 'serpa_watercolor.png');
+}
+
+.home_site_card_image {
+ width: 100%;
+ min-height: 200px;
+ min-width: 200px;
+ background-size: cover;
+ background-position: center;
+ overflow: hidden;
+  border-radius: 10px;
+  border: solid 1px dimgray;
+
+}
+
+a .home_site_card {
+  text-decoration: none;
+}
+
 #home_row2 {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: center;
 }
 
-#home_row2_left {
-  width: 75%;
-}
+.parallax {
+    /* The image used */
+    background-image: url('204807_lg.jpg');
 
-#collaborator_list {
-  width: 25%;
+    margin-left: calc(-1 * ((100vw - 100%) / 2));
+    width: 100vw;
+    max-width: 99.5vw;
+
+    border-top: solid 1px dimgray;
+    border-bottom: solid 1px dimgray;
+
+
+    /* Set a specific height */
+    min-height: 250px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
