@@ -13,5 +13,4 @@
 //= require rails-ujs
 //= require turbolinks
 //= require openseadragon
-//= require annotorious
 //= require_tree .

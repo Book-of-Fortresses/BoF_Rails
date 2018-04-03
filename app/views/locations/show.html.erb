@@ -95,7 +95,6 @@
 <br/>
 <script type="text/javascript">
 
-
 var model = document.getElementById('3d_model');
 
 var plan_drawing = document.getElementById('location_plan');
@@ -176,6 +175,7 @@ viewer_metadata.appendChild(plan_p);
 
   var viewer = OpenSeadragon({
     id: "openseadragon",
+    // toolbar: "toolbar",
     tileSources: {
       type: 'image',
       url: '<%= @location.images.sort_by{|image| image.image_category}[0].url %>'
@@ -184,6 +184,7 @@ viewer_metadata.appendChild(plan_p);
 
   var viewer = OpenSeadragon({
     id: "openseadragon_plan",
+    // toolbar: "toolbar",
     tileSources: {
       type: 'image',
       <% if @location.images.detect{|i| i.image_category == "plan"} %>
@@ -196,6 +197,7 @@ viewer_metadata.appendChild(plan_p);
 
   var viewer = OpenSeadragon({
     id: "openseadragon_image_0",
+    // toolbar: "toolbar",
     tileSources: {
       type: 'image',
       <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0] %>
@@ -208,6 +210,7 @@ viewer_metadata.appendChild(plan_p);
 
   var viewer = OpenSeadragon({
     id: "openseadragon_image_1",
+    // toolbar: "toolbar",
     tileSources: {
       type: 'image',
       <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[1] %>
@@ -220,18 +223,7 @@ viewer_metadata.appendChild(plan_p);
 
   var viewer = OpenSeadragon({
     id: "openseadragon_image_2",
-    tileSources: {
-      type: 'image',
-      <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[2] %>
-      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[2].url %>'
-      <% else %>
-      url: '<%= @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[0].url %>'
-      <% end %>
-    }
-  });
-
-  var viewer = OpenSeadragon({
-    id: "openseadragon_image_3",
+    // toolbar: "toolbar",
     tileSources: {
       type: 'image',
       <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[3] %>
@@ -244,6 +236,7 @@ viewer_metadata.appendChild(plan_p);
 
   var viewer = OpenSeadragon({
     id: "openseadragon_image_4",
+    // toolbar: "toolbar",
     tileSources: {
       type: 'image',
       <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[4] %>
@@ -256,6 +249,7 @@ viewer_metadata.appendChild(plan_p);
 
   var viewer = OpenSeadragon({
     id: "openseadragon_image_5",
+    // toolbar: "toolbar",
     tileSources: {
       type: 'image',
       <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[5] %>
@@ -268,6 +262,7 @@ viewer_metadata.appendChild(plan_p);
 
   var viewer = OpenSeadragon({
     id: "openseadragon_image_6",
+    // toolbar: "toolbar",
     tileSources: {
       type: 'image',
       <% if @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}[6] %>
