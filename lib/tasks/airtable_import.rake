@@ -117,7 +117,7 @@ namespace :db do
     end
 
     if offset != ''
-      Rake::Task["db:load_perspective_drawings"].execute
+      Rake::Task["db:load_images"].execute
     else
       puts "finished loading all the drawings"
     end
