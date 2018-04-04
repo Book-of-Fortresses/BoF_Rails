@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404221658) do
+ActiveRecord::Schema.define(version: 20180404223255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20180404221658) do
     t.string "large_thumbnail_url"
     t.integer "large_thumbnail_width"
     t.integer "large_thumbnail_height"
-    t.string "at_perspective_drawings_table_id"
+    t.string "at_images_table_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_type"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20180404221658) do
     t.string "exterior_features"
     t.string "status"
     t.string "fortress_features"
-    t.string "at_perspective_drawings_table_time_created"
+    t.string "at_images_table_time_created"
     t.integer "page_number"
     t.string "source"
     t.integer "slug"

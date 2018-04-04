@@ -30,9 +30,9 @@ namespace :db do
     end
   end
 
-  desc "import perspective drawings from airtable"
+  desc "import images from airtable"
   offset = ''
-  task :load_perspective_drawings => [:environment] do
+  task :load_images => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Images/?offset='+offset
     response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
 
@@ -43,10 +43,10 @@ namespace :db do
     end
     puts "offset:" + offset
 
-    perspective_drawings_json = response.parsed_response["records"].to_a
+    images_json = response.parsed_response["records"].to_a
 
-    perspective_drawings_json.each do |record|
-      at_perspective_drawings_table_id = record["id"]
+    images_json.each do |record|
+        at_images_table_id = record["id"]
         page_number = record["fields"].try(:[], "page_number")
         slug = record["fields"]["slug"]
         primary_site_name = record["fields"]["primary_site_name"]
@@ -56,6 +56,7 @@ namespace :db do
         secondary_site_name = record["fields"]["secondary_site_name"]
         secondary_site_kingdom = record["fields"]["secondary_site_kingdom"]
         number_of_watchtowers = record["fields"]["number_of_watchtowers"]
+        agol_slide_embed = record["fields"]["agol_slide_embed"]
         if record["fields"]["exterior_features"]
           exterior_features = record["fields"]["exterior_features"].join(", ")
         end
@@ -67,7 +68,7 @@ namespace :db do
         if record["fields"]["fortress_features"]
           fortress_features = record["fields"]["fortress_features"].join(", ")
         end
-        at_perspective_drawings_table_time_created = record["fields"]["createdTime"]
+        at_images_table_time_created = record["fields"]["createdTime"]
 
         record["fields"]["image"].each do |image|
           at_image_id = image.try(:[], "id")
@@ -86,7 +87,7 @@ namespace :db do
           Image.create!(
             "at_image_id" => at_image_id,
             "slug" => slug,
-            "at_perspective_drawings_table_id" => at_perspective_drawings_table_id,
+            "at_images_table_id" => at_images_table_id,
             "at_locations_table_id" => at_locations_table_id,
             "url" => url,
             "filename" => filename,
@@ -103,7 +104,8 @@ namespace :db do
             "exterior_features" => exterior_features,
             "status" => status,
             "fortress_features" => fortress_features,
-            "at_perspective_drawings_table_time_created" => at_perspective_drawings_table_time_created,
+            "agol_slide_embed" => agol_slide_embed,
+            "at_images_table_time_created" => at_images_table_time_created,
             "small_thumbnail_url" => small_thumbnail_url,
             "small_thumbnail_width" => small_thumbnail_width,
             "small_thumbnail_height" => small_thumbnail_height,
