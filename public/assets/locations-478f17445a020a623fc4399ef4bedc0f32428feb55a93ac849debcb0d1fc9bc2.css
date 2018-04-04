@@ -1,0 +1,129 @@
+
+
+/* Index Page */
+
+#locations_wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+tbody {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 60vh;
+  width: 50vw;
+}
+
+tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 1.5em;
+}
+
+#locations_map {
+  min-width: 500px;
+}
+
+/* Individual Page */
+
+#location_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#location_first_column {
+  display: flex;
+  flex-direction: column;
+  width: 39%;
+  min-width: 350px;
+  align-items: flex-start;
+}
+
+#location_first_column_first_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+#location_second_column {
+  display: flex;
+  flex-direction: column;
+  width: 59%;
+  justify-content: flex-start;
+}
+
+#location_metadata {
+  width: 37%;
+  min-width: 200px;
+  margin: 0 10px 10px 0;
+  justify-content: flex-start;
+}
+
+#location_plan {
+  width: 57%;
+  min-width: 300px;
+  border: solid 1px dimgray;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#location_plan img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#location_image_gallery_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+#location_image_gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
+}
+
+.location_image_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 10vw;
+  padding: 5px;
+  margin: 3px 3px 10px 3px;
+  border: solid 1px dimgray;
+  border-radius: 5px;
+  max-height: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.openseadragon {
+  display: flex;
+  align-items: flex-start;
+  /* flex-basis: 800px; */
+  height: 70vh;
+  /* max-height: 700px; */
+}
+
+#current_image_metadata {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
