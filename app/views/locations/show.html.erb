@@ -33,7 +33,7 @@
         <% if @location.images.detect{|i| i.image_category == "plan"} %>
         <img src="<%= @location.images.detect{|i| i.image_category == "plan"}.url %>"></img>
         <% else %>
-        <img src="<%= image_path 'plan_unavailable.png' %>"></img>
+        <img src="<%= asset_path 'plan_unavailable.png' %>"></img>
         <% end %>
       </div>
     </div>
@@ -109,6 +109,11 @@
   else {
     var initial_image = document.getElementById('image_0');
     var initial_viewer = document.getElementById('openseadragon_image_0');
+    var initial_metadata = initial_image.querySelector('.location_image_card_metadata');
+    initial_metadata.querySelectorAll('p').forEach(function(p) {
+      x = p.cloneNode(true);
+      viewer_metadata.appendChild(x);
+  });
     initial_viewer.style.display = "";
     initial_image.style.border = "solid 2px red";
   }
@@ -182,7 +187,7 @@
       <% if @location.images.detect{|i| i.image_category == "plan"} %>
       url: '<%=  @location.images.detect{|i| i.image_category == "plan"}.url %>'
       <% else %>
-      url: '<%= image_path 'plan_unavailable.png' %>'
+      url: '<%= asset_path 'plan_unavailable.png' %>'
       <% end %>
     }
   });
@@ -200,5 +205,5 @@
   <% end %>
 
   add_listeners();
-  
+
 </script>
