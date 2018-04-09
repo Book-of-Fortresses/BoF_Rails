@@ -150,11 +150,11 @@ button {
   border-color: dimgray;
 }
 
-#openseadragon_button {
+.openseadragon_button {
   margin-right: 5px;
 }
 
-#agol_button {
+.agol_button {
   width: 150px;
 }
 

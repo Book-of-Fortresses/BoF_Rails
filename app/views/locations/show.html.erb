@@ -86,8 +86,8 @@
     <% end %>
     <div id="below_viewer_wrapper">
       <div id="button_wrapper">
-          <button type="button" id="openseadragon_button">IMAGE</button>
-          <button type="button" id="agol_button">LANDSCAPE</button>
+          <button type="button" class="openseadragon_button" name="image_button" onclick="reload_image(this)">IMAGE</button>
+          <button type="button" class="agol_button" name="agol_button" onclick="display_agol_slide(this)">LANDSCAPE</button>
       </div>
       <div id="current_image_metadata"></div>
     </div>
@@ -161,6 +161,10 @@
     if (document.getElementById('agol_slide_'+this.id)) {
       buttons = document.getElementById('button_wrapper');
       buttons.style.visibility = '';
+      agol_button = document.getElementsByName('agol_button')[0];
+      image_button = document.getElementsByName('image_button')[0];
+      image_button.id = this.id;
+      agol_button.id = this.id;
     }
   }
 
@@ -189,6 +193,39 @@
     plan_p = document.createElement('p');
     plan_p.appendChild(plan_metadata);
     viewer_metadata.appendChild(plan_p);
+  }
+
+  function display_agol_slide(e) {
+    console.log("e.id: "+e.id);
+    let agol_embed = document.getElementById('agol_slide_'+e.id);
+    let agol_viewer_iframe = agol_embed.getElementsByTagName("iframe")[0];
+    agol_viewer_iframe.style.width = "100%";
+    agol_viewer_iframe.style.height = "100%";
+    // console.log("agol_embed: "+agol_embed.innerHTML);
+    let current_image_viewer = document.getElementById('openseadragon_'+e.id);
+    // console.log("current_image_viewer: "+current_image_viewer);
+    current_image_viewer.style.display = 'none';
+    agol_embed.style.display = '';
+  }
+
+  function reload_image(e){
+    hide_all();
+    console.log("reload_image e.id: "+e.id)
+    openseadragon_image = document.getElementById('openseadragon_'+e.id);
+    openseadragon_image.style.display = "";
+    gallery_card = document.getElementById(e.id);
+    gallery_card.style.border = "solid 2px red";
+    card_metadata = gallery_card.querySelector('.location_image_card_metadata');
+    gallery_card.querySelectorAll('p').forEach(function(p) {
+      x = p.cloneNode(true);
+      viewer_metadata.appendChild(x);
+    });
+    if (document.getElementById('agol_slide_'+e.id)) {
+      buttons = document.getElementById('button_wrapper');
+      buttons.style.visibility = '';
+      agol_button = document.getElementsByName('agol_button')[0];
+      agol_button.id = e.id;
+    }
   }
 
   var viewer = OpenSeadragon({
