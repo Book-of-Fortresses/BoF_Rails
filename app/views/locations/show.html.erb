@@ -197,6 +197,10 @@
 
   function display_agol_slide(e) {
     console.log("e.id: "+e.id);
+    agol_button = document.getElementsByName('agol_button')[0];
+    agol_button.style.background = 'darkblue';
+    image_button = document.getElementsByName('image_button')[0];
+    image_button.style.background = '#577C92'
     let agol_embed = document.getElementById('agol_slide_'+e.id);
     let agol_viewer_iframe = agol_embed.getElementsByTagName("iframe")[0];
     agol_viewer_iframe.style.width = "100%";
@@ -213,10 +217,13 @@
     console.log("reload_image e.id: "+e.id)
     openseadragon_image = document.getElementById('openseadragon_'+e.id);
     openseadragon_image.style.display = "";
-    gallery_card = document.getElementById(e.id);
-    gallery_card.style.border = "solid 2px red";
-    card_metadata = gallery_card.querySelector('.location_image_card_metadata');
-    gallery_card.querySelectorAll('p').forEach(function(p) {
+    image_card = document.getElementById(e.id);
+    e.style.background = 'darkblue';
+    agol_button = document.getElementsByName('agol_button')[0];
+    agol_button.style.background = '#577C92';
+    image_card.style.border = "solid 2px red";
+    card_metadata = image_card.querySelector('.location_image_card_metadata');
+    image_card.querySelectorAll('p').forEach(function(p) {
       x = p.cloneNode(true);
       viewer_metadata.appendChild(x);
     });
