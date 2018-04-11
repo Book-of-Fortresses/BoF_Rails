@@ -17,13 +17,15 @@ Paloma.controller('Locations', {
       var image_cards = document.querySelectorAll(".location_image_card");
       var viewer_metadata = document.getElementById('current_image_metadata');
 
-
       var button_wrapper = document.getElementById('button_wrapper');
+        button_wrapper.style.visibility = "hidden";
+
       var agol_button = document.getElementsByName('agol_button')[0];
-      agol_button.addEventListener('click', display_agol_slide);
+        agol_button.addEventListener('click', display_agol_slide);
+
       var image_button = document.getElementsByName('image_button')[0];
-      image_button.addEventListener('click', reload_image);
-      button_wrapper.style.visibility = "hidden";
+        image_button.addEventListener('click', reload_image);
+
 
 
 
@@ -61,8 +63,8 @@ Paloma.controller('Locations', {
 
       function hide_all(){
         // Hide all viewer divs
-        [].forEach.call(document.querySelectorAll('.openseadragon'), function (e) {
-          e.style.display = 'none';
+        [].forEach.call(document.querySelectorAll('.openseadragon'), function (viewerWindow) {
+          viewerWindow.style.display = 'none';
         });
         // Set plan and all image card borders to gray
         image_cards.forEach(function(card){
@@ -72,8 +74,7 @@ Paloma.controller('Locations', {
         // Clear any previous viewer metadata
         viewer_metadata.innerHTML = '';
         // Hide viewer buttons
-        buttons = document.getElementById('button_wrapper');
-        buttons.style.visibility = "hidden";
+        button_wrapper.style.visibility = "hidden";
         // Set buttons' color to unclicked blue
         image_button.style.background = '#577C92';
         agol_button.style.background = '#577C92';
@@ -135,8 +136,6 @@ Paloma.controller('Locations', {
       }
 
       function display_agol_slide() {
-        console.log("at display_agol_slide, this: "+this);
-        console.log("at display_agol_slide, this.id: "+this.id);
         // landscape button changes color
         var agol_button = document.getElementsByName('agol_button')[0];
         agol_button.style.background = 'darkblue';
@@ -192,20 +191,17 @@ Paloma.controller('Locations', {
 
       // Create openseadragon viewer var for each image
 
-      for (var i = 0, l = images.length; i < l; i++) {
-
+      for (var i = 0; i < images.length; i++) {
         var viewer = OpenSeadragon({
                   id: "openseadragon_image_"+i,
                   tileSources: {
                     type: 'image',
                     url: images[i].url
                   }
-                });
+        });
+      }
 
-}
       add_listeners();
-
-
 
   }
 });
