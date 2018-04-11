@@ -10,7 +10,9 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    if @location.at_collaborator_id
     js :collaborator => Collaborator.find_by(at_collaborator_id: @location.at_collaborator_id).name
+  end
 
 
     if @location.images.detect{|i| i.image_category == "plan"}

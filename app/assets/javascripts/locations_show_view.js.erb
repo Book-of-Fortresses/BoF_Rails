@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 Paloma.controller('Locations', {
   show: function(){
 
-    // Params passed from controller
+    // Params passed from locations controller
     var collaborator = this.params.collaborator;
     var images = this.params.images;
     var plan_url = this.params.plan_url;
@@ -19,13 +19,12 @@ Paloma.controller('Locations', {
 
 
       var button_wrapper = document.getElementById('button_wrapper');
-      // button_wrapper.innerHTML = <button type='button' class='openseadragon_button' name='image_button' onClick='reload_image(this)'>IMAGE</button>
-      // <button type='button' class='agol_button' name='agol_button' onClick='display_agol_slide(this)'>LANDSCAPE</button>
-
       var agol_button = document.getElementsByName('agol_button')[0];
       agol_button.addEventListener('click', display_agol_slide);
       var image_button = document.getElementsByName('image_button')[0];
       image_button.addEventListener('click', reload_image);
+      button_wrapper.style.visibility = "hidden";
+
 
 
 
@@ -205,6 +204,7 @@ Paloma.controller('Locations', {
 
 }
       add_listeners();
+
 
 
   }
