@@ -36,6 +36,7 @@ tr {
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 40px;
 }
 
 #location_first_column {
@@ -116,7 +117,7 @@ tr {
   position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 10%;
-
+    padding-bottom: 40px;
 }
 
 .openseadragon {
@@ -131,8 +132,8 @@ tr {
 #below_viewer_wrapper {
   display: flex;
   width: 100%;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 #button_wrapper {
@@ -165,13 +166,10 @@ button {
   width: 150px;
 }
 
-#current_image_metadata {
+#current_image_metadata_wrapper {
+  margin-top: 5px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-self: center;
-  position: relative;
-  top: 50px;
-  width: 33%;
-
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
