@@ -10,6 +10,22 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    js :collaborator => Collaborator.find_by(at_collaborator_id: @location.at_collaborator_id).name
+
+
+    if @location.images.detect{|i| i.image_category == "plan"}
+    js :plan_url => @location.images.detect{|i| i.image_category == "plan"}.url
+    else
+    js :plan_url => asset_path("plan_unavailable.png")
+    end
+
+
+
+
+
+    js :images => @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}
+
+
     render :show
   end
 

@@ -43,6 +43,9 @@ gem 'dotenv-rails', groups: [:development, :test]
 # To use postgis
 gem 'activerecord-postgis-adapter', '~> 5.2'
 
+# page-specific JavaScript
+gem 'paloma', '~> 5.1.0'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

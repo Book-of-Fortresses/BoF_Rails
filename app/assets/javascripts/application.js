@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require openseadragon
+//= require paloma
 //= require_tree .
