@@ -21,15 +21,15 @@
 }
 
 #home_site_1 {
-  background-image: url( 'castro_marim_watercolor.png');
+  background-image: url( 'home/castro_marim_watercolor.png');
 }
 
 #home_site_2 {
-  background-image: url( 'alcoutim_codexa.jpg');
+  background-image: url( 'home/alcoutim_codexa.jpg');
 }
 
 #home_site_3 {
-  background-image: url( 'serpa_watercolor.png');
+  background-image: url( 'home/serpa_watercolor.png');
 }
 
 .home_site_card_image {
@@ -57,7 +57,7 @@ a .home_site_card {
 
 .parallax {
     /* The image used */
-    background-image: url('204807_lg.jpg');
+    background-image: url('home/204807_lg.jpg');
 
     margin-left: calc(-1 * ((100vw - 100%) / 2));
     width: 100vw;

@@ -28,7 +28,7 @@
         <% if @location.images.detect{|i| i.image_category == "plan"} %>
         <img src="<%= @location.images.detect{|i| i.image_category == "plan"}.url %>"></img>
         <% else %>
-        <img src="<%= asset_path 'plan_unavailable.png' %>"></img>
+        <img src="<%= asset_path 'location/plan_unavailable.png' %>"></img>
         <% end %>
       </div>
     </div>
@@ -37,7 +37,7 @@
         <% if @location.a360_3D_model_embed %>
           <div class="location_image_card" id="3d_model">
             <div class="location_image_card_thumbnail">
-              <img src="<%= asset_path '3d_model.png' %>" width="200px" height="auto"></img>
+              <img src="<%= asset_path 'location/3d_model.png' %>" width="200px" height="auto"></img>
             </div>
           </div>
         <% end %>
@@ -94,7 +94,7 @@
       </div>
       <div id="current_image_metadata_wrapper">
         <div id="current_image_metadata">
-          
+
         </div>
       </div>
     </div>
