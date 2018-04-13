@@ -15,7 +15,7 @@
   * find the file here: vendor/assets/openseadragon/openseadragon.js.erb
   * openseadragon.js --> openseadragon.js.erb
   * Replace:
-    `//INTERFACE RESOURCE SETTINGS
+    ```//INTERFACE RESOURCE SETTINGS
     prefixUrl: "/images/",
     navImages: {
         zoomIn: {
@@ -66,11 +66,11 @@
             HOVER:  'next_hover.png',
             DOWN:   'next_pressed.png'
         }
-    },`
+    },```
 
     with:
 
-    `//INTERFACE RESOURCE SETTINGS
+    ```//INTERFACE RESOURCE SETTINGS
 
     prefixUrl:  "",
     navImages: {
@@ -122,4 +122,4 @@
         HOVER:  '<%= asset_path 'openseadragon/next_hover.png' %>',
         DOWN:   '<%= asset_path 'openseadragon/next_pressed.png' %>'
     }
-  },`
+  },```
