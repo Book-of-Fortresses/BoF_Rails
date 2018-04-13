@@ -1,11 +1,7 @@
-
+// Start Paloma whenever page is loaded (including navigation events)
 document.addEventListener("turbolinks:load", function() {
   Paloma.start();
 })
-// Start Paloma
-// document.addEventListener("DOMContentLoaded", function(event) {
-//   Paloma.start();
-// });
 
 Paloma.controller('Locations', {
   show: function(){
