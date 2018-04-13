@@ -18,7 +18,8 @@
 * Find the file here: vendor/assets/openseadragon/openseadragon.js.erb
   * Added erb to file extension for openseadragon.js (openseadragon.js.erb)
   * Replace paths to navigation buttons:
-    ```//INTERFACE RESOURCE SETTINGS
+    ```
+    //INTERFACE RESOURCE SETTINGS
     prefixUrl: "/images/",
     navImages: {
         zoomIn: {
@@ -28,57 +29,59 @@
             DOWN:   'zoomin_pressed.png'
         },
         ...
-        ```
+    ```        
     with:
-    ```//INTERFACE RESOURCE SETTINGS
+    ```
+    //INTERFACE RESOURCE SETTINGS
     prefixUrl:  "",
     navImages: {
       zoomIn: {
-      REST:     '<%= asset_path 'openseadragon/zoomin_rest.png' %>',
-      GROUP:    '<%= asset_path 'openseadragon/zoomin_grouphover.png' %>',
-      HOVER:    '<%= asset_path 'openseadragon/zoomin_hover.png' %>',
-      DOWN:     '<%= asset_path 'openseadragon/zoomin_pressed.png' %>'
+          REST:     '<%= asset_path 'openseadragon/zoomin_rest.png' %>',
+          GROUP:    '<%= asset_path 'openseadragon/zoomin_grouphover.png' %>',
+          HOVER:    '<%= asset_path 'openseadragon/zoomin_hover.png' %>',
+          DOWN:     '<%= asset_path 'openseadragon/zoomin_pressed.png' %>'
+      },
+      zoomOut: {
+          REST:   '<%= asset_path 'openseadragon/zoomout_rest.png' %>',
+          GROUP:  '<%= asset_path 'openseadragon/zoomout_grouphover.png' %>',
+          HOVER:  '<%= asset_path 'openseadragon/zoomout_hover.png' %>',
+          DOWN:   '<%= asset_path 'openseadragon/zoomout_pressed.png' %>'
+      },
+      home: {
+          REST:   '<%= asset_path 'openseadragon/home_rest.png' %>',
+          GROUP:  '<%= asset_path 'openseadragon/home_grouphover.png' %>',
+          HOVER:  '<%= asset_path 'openseadragon/home_hover.png' %>',
+          DOWN:   '<%= asset_path 'openseadragon/home_pressed.png' %>'
+      },
+      fullpage: {
+          REST:   '<%= asset_path 'openseadragon/fullpage_rest.png' %>',
+          GROUP:  '<%= asset_path 'openseadragon/fullpage_grouphover.png' %>',
+          HOVER:  '<%= asset_path 'openseadragon/fullpage_hover.png' %>',
+          DOWN:   '<%= asset_path 'openseadragon/fullpage_pressed.png' %>'
+      },
+      rotateleft: {
+          REST:   '<%= asset_path 'openseadragon/rotateleft_rest.png' %>',
+          GROUP:  '<%= asset_path 'openseadragon/rotateleft_grouphover.png' %>',
+          HOVER:  '<%= asset_path 'openseadragon/rotateleft_hover.png' %>',
+          DOWN:   '<%= asset_path 'openseadragon/rotateleft_pressed.png' %>'
+      },
+      rotateright: {
+          REST:   '<%= asset_path 'openseadragon/rotateright_rest.png' %>',
+          GROUP:  '<%= asset_path 'openseadragon/rotateright_grouphover.png' %>',
+          HOVER:  '<%= asset_path 'openseadragon/rotateright_hover.png' %>',
+          DOWN:   '<%= asset_path 'openseadragon/rotateright_pressed.png' %>'
+      },
+      previous: {
+          REST:   '<%= asset_path 'openseadragon/previous_rest.png' %>',
+          GROUP:  '<%= asset_path 'openseadragon/previous_grouphover.png' %>',
+          HOVER:  '<%= asset_path 'openseadragon/previous_hover.png' %>',
+          DOWN:   '<%= asset_path 'openseadragon/previous_pressed.png' %>'
+      },
+      next: {
+          REST:   '<%= asset_path 'openseadragon/next_rest.png' %>',
+          GROUP:  '<%= asset_path 'openseadragon/next_grouphover.png' %>',
+          HOVER:  '<%= asset_path 'openseadragon/next_hover.png' %>',
+          DOWN:   '<%= asset_path 'openseadragon/next_pressed.png' %>'
+      }
     },
-    zoomOut: {
-        REST:   '<%= asset_path 'openseadragon/zoomout_rest.png' %>',
-        GROUP:  '<%= asset_path 'openseadragon/zoomout_grouphover.png' %>',
-        HOVER:  '<%= asset_path 'openseadragon/zoomout_hover.png' %>',
-        DOWN:   '<%= asset_path 'openseadragon/zoomout_pressed.png' %>'
-    },
-    home: {
-        REST:   '<%= asset_path 'openseadragon/home_rest.png' %>',
-        GROUP:  '<%= asset_path 'openseadragon/home_grouphover.png' %>',
-        HOVER:  '<%= asset_path 'openseadragon/home_hover.png' %>',
-        DOWN:   '<%= asset_path 'openseadragon/home_pressed.png' %>'
-    },
-    fullpage: {
-        REST:   '<%= asset_path 'openseadragon/fullpage_rest.png' %>',
-        GROUP:  '<%= asset_path 'openseadragon/fullpage_grouphover.png' %>',
-        HOVER:  '<%= asset_path 'openseadragon/fullpage_hover.png' %>',
-        DOWN:   '<%= asset_path 'openseadragon/fullpage_pressed.png' %>'
-    },
-    rotateleft: {
-        REST:   '<%= asset_path 'openseadragon/rotateleft_rest.png' %>',
-        GROUP:  '<%= asset_path 'openseadragon/rotateleft_grouphover.png' %>',
-        HOVER:  '<%= asset_path 'openseadragon/rotateleft_hover.png' %>',
-        DOWN:   '<%= asset_path 'openseadragon/rotateleft_pressed.png' %>'
-    },
-    rotateright: {
-        REST:   '<%= asset_path 'openseadragon/rotateright_rest.png' %>',
-        GROUP:  '<%= asset_path 'openseadragon/rotateright_grouphover.png' %>',
-        HOVER:  '<%= asset_path 'openseadragon/rotateright_hover.png' %>',
-        DOWN:   '<%= asset_path 'openseadragon/rotateright_pressed.png' %>'
-    },
-    previous: {
-        REST:   '<%= asset_path 'openseadragon/previous_rest.png' %>',
-        GROUP:  '<%= asset_path 'openseadragon/previous_grouphover.png' %>',
-        HOVER:  '<%= asset_path 'openseadragon/previous_hover.png' %>',
-        DOWN:   '<%= asset_path 'openseadragon/previous_pressed.png' %>'
-    },
-    next: {
-        REST:   '<%= asset_path 'openseadragon/next_rest.png' %>',
-        GROUP:  '<%= asset_path 'openseadragon/next_grouphover.png' %>',
-        HOVER:  '<%= asset_path 'openseadragon/next_hover.png' %>',
-        DOWN:   '<%= asset_path 'openseadragon/next_pressed.png' %>'
-    }
-  },```
+  ```
