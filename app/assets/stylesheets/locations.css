@@ -113,6 +113,12 @@ tr {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.location_image_card_metadata {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 #viewer_wrapper {
   position: -webkit-sticky; /* Safari */
     position: sticky;
