@@ -36,10 +36,10 @@
     prefixUrl:  "",
     navImages: {
       zoomIn: {
-          REST:     '<%= asset_path 'openseadragon/zoomin_rest.png' %>',
-          GROUP:    '<%= asset_path 'openseadragon/zoomin_grouphover.png' %>',
-          HOVER:    '<%= asset_path 'openseadragon/zoomin_hover.png' %>',
-          DOWN:     '<%= asset_path 'openseadragon/zoomin_pressed.png' %>'
+          REST:   '<%= asset_path 'openseadragon/zoomin_rest.png' %>',
+          GROUP:  '<%= asset_path 'openseadragon/zoomin_grouphover.png' %>',
+          HOVER:  '<%= asset_path 'openseadragon/zoomin_hover.png' %>',
+          DOWN:   '<%= asset_path 'openseadragon/zoomin_pressed.png' %>'
       },
       zoomOut: {
           REST:   '<%= asset_path 'openseadragon/zoomout_rest.png' %>',
