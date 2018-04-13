@@ -1,7 +1,11 @@
-// Start Paloma
-document.addEventListener("DOMContentLoaded", function(event) {
+
+document.addEventListener("turbolinks:load", function() {
   Paloma.start();
-});
+})
+// Start Paloma
+// document.addEventListener("DOMContentLoaded", function(event) {
+//   Paloma.start();
+// });
 
 Paloma.controller('Locations', {
   show: function(){
@@ -27,11 +31,9 @@ Paloma.controller('Locations', {
         image_button.addEventListener('click', reload_image);
 
 
-
-
-
       // if the location has a 3D model, display that in viewer
       if (model) {
+        console.log("loading model!")
         load_model();
       }
       // if the location does not have a 3D model, display the image for the first image card
@@ -58,8 +60,6 @@ Paloma.controller('Locations', {
             model.addEventListener('click',load_model);
           };
       }
-
-
 
       function hide_all(){
         // Hide all viewer divs
@@ -179,7 +179,6 @@ Paloma.controller('Locations', {
       }
 
       // viewer for plan
-
 
       var viewer = OpenSeadragon({
         id: "openseadragon_plan",
