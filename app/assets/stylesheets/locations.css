@@ -115,6 +115,8 @@ tr {
 
 .location_image_card_metadata {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100%;
 }
