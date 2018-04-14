@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root "pages#show", page: "home"
 
-  get ":page" => "pages#show"
-
   resources :locations, param: :slug, only: [:index, :show]
   resources :images, param: :slug, only: [:show]
+
+  get ":page" => "pages#show"
+
+
 
 
 
