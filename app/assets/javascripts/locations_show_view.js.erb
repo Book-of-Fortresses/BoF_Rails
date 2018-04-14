@@ -11,167 +11,213 @@ Paloma.controller('Locations', {
     var images = this.params.images;
     var plan_url = this.params.plan_url;
 
-      // set variables
-      var model = document.getElementById('3d_model');
-      var plan_drawing = document.getElementById('location_plan');
-      var image_cards = document.querySelectorAll(".location_image_card");
-      var viewer_metadata = document.getElementById('current_image_metadata');
+    // set variables
+    var model = document.getElementById('3d_model');
+    var plan_drawing = document.getElementById('location_plan');
+    var image_cards = document.querySelectorAll(".location_image_card");
+    var viewer_metadata = document.getElementById('current_image_metadata');
+    var buttons = document.getElementById('button_wrapper');
+    var agol_button = document.getElementsByName('agol_button')[0];
+    var image_button = document.getElementsByName('image_button')[0];
 
-      var button_wrapper = document.getElementById('button_wrapper');
-        button_wrapper.style.visibility = "hidden";
+    // show or hide elements
+    function hide(e){
+      e.style.display = "none";
+    }
 
-      var agol_button = document.getElementsByName('agol_button')[0];
-        agol_button.addEventListener('click', display_agol_slide);
+    function show(e){
+      e.style.display = '';
+    }
 
-      var image_button = document.getElementsByName('image_button')[0];
-        image_button.addEventListener('click', reload_image);
+    function make_invisible(e){
+      e.style.visibility = "hidden";
+    }
 
+    function make_visible(e){
+      e.style.visibility = '';
+    }
 
-      // if the location has a 3D model, display that in viewer
+    // highlight or un-highlight elements
+    function red_border(e){
+      e.style.border = "solid 2px red";
+    }
+
+    function gray_border(e){
+      e.style.border = "solid 1px dimgray";
+    }
+
+    // Set viewer size
+    function size_viewer(e){
+      e.style.width = "100%";
+      e.style.height = "100%";
+    }
+
+    // Current image metadata displays below viewer
+    function create_viewer_metadata(id){
+      var image_card = document.getElementById(id);
+      var card_metadata = image_card.querySelector('.location_image_card_metadata');
+      card_metadata.querySelectorAll('p').forEach(function(p) {
+        x = p.cloneNode(true);
+        viewer_metadata.appendChild(x);
+      });
+    }
+
+    // Determine initial viewer model/image
+    function startup(){
+
+      // hide image/landscape buttons below viewer
+      make_invisible(buttons);
+
+      // if the location has a 3D model, display that in the viewer space
       if (model) {
-        console.log("loading model!")
         load_model();
       }
-      // if the location does not have a 3D model, display the image for the first image card
+
+      // if the location does not have a 3D model, display the image for the first image card in the viewer
       else {
-        var initial_image = document.getElementById('image_0');
-        var initial_viewer = document.getElementById('openseadragon_image_0');
-        var initial_metadata = initial_image.querySelector('.location_image_card_metadata');
-        initial_metadata.querySelectorAll('p').forEach(function(p) {
-          x = p.cloneNode(true);
-          viewer_metadata.appendChild(x);
+        create_viewer_metadata('image_0');
+        show(document.getElementById('openseadragon_image_0'));
+        red_border(document.getElementById('image_0'));
+      }
+    }
+
+    // Add onclick event listeners to cards and buttons
+    function add_listeners(){
+      plan_drawing.addEventListener('click', load_plan);
+      agol_button.addEventListener('click', display_agol_slide);
+      image_button.addEventListener('click', reload_image);
+
+      image_cards.forEach(function(card) {
+        if (card.id != '3d_model') {
+          card.addEventListener('click',load_image);
+        }
       });
-        initial_viewer.style.display = "";
-        initial_image.style.border = "solid 2px red";
-      }
 
-      function add_listeners(){
-        plan_drawing.addEventListener('click', load_plan);
-        image_cards.forEach(function(card) {
-          if (card.id != '3d_model') {
-            card.addEventListener('click',load_image);
-          }
-        });
-          if (model) {
-            model.addEventListener('click',load_model);
-          };
-      }
+      if (model) {
+        model.addEventListener('click',load_model);
+      };
+    }
 
-      function hide_all(){
-        // Hide all viewer divs
-        [].forEach.call(document.querySelectorAll('.openseadragon'), function (viewerWindow) {
-          viewerWindow.style.display = 'none';
-        });
-        // Set plan and all image card borders to gray
-        image_cards.forEach(function(card){
-          card.style.border = "solid 1px dimgray";
-        });
-        document.getElementById('location_plan').style.border = "solid 1px dimgray";
-        // Clear any previous viewer metadata
-        viewer_metadata.innerHTML = '';
-        // Hide viewer buttons
-        button_wrapper.style.visibility = "hidden";
-        // Set buttons' color to unclicked blue
-        image_button.style.background = '#577C92';
-        agol_button.style.background = '#577C92';
+    function hide_all(){
+      // Hide all viewer divs
+      [].forEach.call(document.querySelectorAll('.openseadragon'), function (viewerWindow) {
+        hide(viewerWindow);
+      });
+
+      // Set plan and all image card borders to gray
+      image_cards.forEach(function(card){
+        gray_border(card);
+      });
+      gray_border(document.getElementById('location_plan'));
+
+      // Clear any previous viewer metadata
+      viewer_metadata.innerHTML = '';
+
+      // Hide viewer buttons
+      make_invisible(buttons);
+    }
+
+    // Show viewer buttons if image has landscape viewer
+    function show_viewer_buttons(id){
+      if (document.getElementById('agol_slide_'+id)) {
+        make_visible(buttons);
+        red_border(image_button);
+        gray_border(agol_button);
+        image_button.id = id;
+        agol_button.id = id;
       }
+    }
 
       function load_image(){
         hide_all();
+
         // un-hide corresponding viewer div
-        openseadragon_image = document.getElementById('openseadragon_'+this.id);
-        openseadragon_image.style.display = "";
+        show(document.getElementById('openseadragon_'+this.id));
+
         // highlight clicked image card in red
-        this.style.border = "solid 2px red";
+        red_border(this);
+
         // display image metadata below viewer
-        card_metadata = this.querySelector('.location_image_card_metadata');
-        this.querySelectorAll('p').forEach(function(p) {
-          x = p.cloneNode(true);
-          viewer_metadata.appendChild(x);
-        });
+        create_viewer_metadata(this.id);
+
         // if image has ArcGIS, display buttons below viewer
-        if (document.getElementById('agol_slide_'+this.id)) {
-          buttons = document.getElementById('button_wrapper');
-          buttons.style.visibility = '';
-          image_button.id = this.id;
-          agol_button.id = this.id;
-        }
+        show_viewer_buttons(this.id);
       }
 
       function load_model(){
         hide_all();
+
         // un-hide viewer div for 3D model
-        let model_viewer = document.getElementById('3d_model_iframe');
-        model_viewer.style.display = "";
+        var model_viewer = document.getElementById('3d_model_iframe');
+        show(model_viewer);
+
         // select and style 3D model iframe
-        let model_viewer_iframe = model_viewer.getElementsByTagName("iframe")[0];
-        model_viewer_iframe.style.width = "100%";
-        model_viewer_iframe.style.height = "100%";
+        size_viewer(model_viewer.getElementsByTagName("iframe")[0]);
+
         // highlight 3D model card
-        model.style.border = "solid 2px red";
+        red_border(model);
+
         // create model metadata & display below viewer
-        model_metadata = document.createTextNode("Modeled by: " + collaborator);
-        model_p = document.createElement('p');
+        var model_metadata = document.createTextNode("Modeled by: " + collaborator);
+        var model_p = document.createElement('p');
         model_p.appendChild(model_metadata);
         viewer_metadata.appendChild(model_p);
       }
 
       function load_plan(){
         hide_all();
+
         // select & un-hide plan viewer div
-        let openseadragon_plan = document.getElementById('openseadragon_plan');
-        openseadragon_plan.style.display = "";
+        show(document.getElementById('openseadragon_plan'));
+
         // highlight plan drawing thumbnail
-        plan_drawing.style.border = "solid 2px red";
+        red_border(plan_drawing);
+
         // create and display metadata below viewer
-        location_name = document.getElementById('title').innerHTML
-        plan_metadata = document.createTextNode(location_name + " Plan");
-        plan_p = document.createElement('p');
+        var location_name = document.getElementById('title').innerHTML
+        var plan_metadata = document.createTextNode(location_name + " Plan");
+        var plan_p = document.createElement('p');
         plan_p.appendChild(plan_metadata);
         viewer_metadata.appendChild(plan_p);
       }
 
       function display_agol_slide() {
-        // landscape button changes color
-        var agol_button = document.getElementsByName('agol_button')[0];
-        agol_button.style.background = 'darkblue';
-        var image_button = document.getElementsByName('image_button')[0];
-        image_button.style.background = '#577C92';
+
+        // highlight landscape button with red border
+        red_border(agol_button);
+        gray_border(image_button);
+
         // un-hide agol viewer
-        let agol_embed = document.getElementById('agol_slide_'+this.id);
-        agol_embed.style.display = '';
+        var agol_embed = document.getElementById('agol_slide_'+this.id);
+        show(agol_embed);
+
         // style agol iframe
-        let agol_viewer_iframe = agol_embed.getElementsByTagName("iframe")[0];
-        agol_viewer_iframe.style.width = "100%";
-        agol_viewer_iframe.style.height = "100%";
+        size_viewer(agol_embed.getElementsByTagName("iframe")[0]);
+
         // hide image openseadragon
-        let current_image_viewer = document.getElementById('openseadragon_'+this.id);
-        current_image_viewer.style.display = 'none';
+        hide(document.getElementById('openseadragon_'+this.id));
       }
 
       function reload_image(){
         hide_all();
+
         // unhide image viewer
-        openseadragon_image = document.getElementById('openseadragon_'+this.id);
-        openseadragon_image.style.display = "";
-        // image button turns dark blue, landscape goes back to initial blue
-        this.style.background = 'darkblue';
-        agol_button.style.background = '#577C92';
+        show(document.getElementById('openseadragon_'+this.id));
+
+        // highlight image button with red border
+        red_border(this);
+
+        // landscape button border should be gray
+        gray_border(this);
+
         // highlight image card thumbnail
-        image_card = document.getElementById(this.id);
-        image_card.style.border = "solid 2px red";
+        red_border(document.getElementById(this.id));
+
         // display image metadata below viewer
-        card_metadata = image_card.querySelector('.location_image_card_metadata');
-        image_card.querySelectorAll('p').forEach(function(p) {
-          x = p.cloneNode(true);
-          viewer_metadata.appendChild(x);
-        });
+        create_viewer_metadata(this.id);
+
         // if image has GIS, display buttons
-        if (document.getElementById('agol_slide_'+this.id)) {
-          buttons = document.getElementById('button_wrapper');
-          buttons.style.visibility = '';
-          agol_button.id = this.id;
-        }
+        show_viewer_buttons(this.id);
       }
 
       // viewer for plan
@@ -184,7 +230,7 @@ Paloma.controller('Locations', {
         }
       });
 
-      // Create openseadragon viewer var for each image
+      // Create openseadragon viewer for each image
 
       for (var i = 0; i < images.length; i++) {
         var viewer = OpenSeadragon({
@@ -196,6 +242,7 @@ Paloma.controller('Locations', {
         });
       }
 
+      startup();
       add_listeners();
 
   }
