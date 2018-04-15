@@ -17,10 +17,12 @@
     <%= csrf_meta_tags %>
     <link rel="icon" type="image/png" href="<%= asset_path 'logos/BOF.png'%>">
     <link href="https://fonts.googleapis.com/css?family=Varela|Yantramanav" rel="stylesheet">
+    <%= stylesheet_link_tag 'main' %>
     <%= stylesheet_link_tag 'images' %>
     <%= stylesheet_link_tag 'locations' %>
     <%= stylesheet_link_tag 'about' %>
-    <%= stylesheet_link_tag 'main' %>
+    <%= stylesheet_link_tag 'methods' %>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--[if IE]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
