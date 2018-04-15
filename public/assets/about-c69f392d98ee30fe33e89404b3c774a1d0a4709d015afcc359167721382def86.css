@@ -1,0 +1,29 @@
+.about_page{
+  display: flex;
+  flex-direction: column;
+}
+
+.about_page h3{
+  margin-bottom: 20px;
+}
+
+.about_page h4{
+  line-height: 1.5em;
+}
+
+.about_list{
+  list-style-type: disc;
+  position: relative;
+  left: 40px;
+  margin-bottom: 15px;
+}
+
+.about_list li {
+  line-height: 1.3em;
+}
+
+.about_collaborators{
+  position: relative;
+  left: 20px;
+  margin-bottom: 20px;
+}
