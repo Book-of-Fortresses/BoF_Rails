@@ -121,6 +121,20 @@ tr {
   height: 100%;
 }
 
+.location_image_card_metadata p {
+  margin: 0;
+  line-height: 1em;
+  position: relative;
+  left: 0px;
+}
+
+.landscape_view p {
+  margin: 0;
+  line-height: 1em;
+  position: relative;
+  left: 0px;
+}
+
 #viewer_wrapper {
   position: -webkit-sticky; /* Safari */
     position: sticky;
@@ -180,4 +194,11 @@ button {
   flex-direction: row;
   justify-content: center;
   width: 100%;
+}
+
+#current_image_metadata_wrapper p {
+  margin: 0;
+  line-height: 1em;
+  position: relative;
+  left: 0px;
 }

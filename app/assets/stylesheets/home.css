@@ -10,6 +10,7 @@
   flex-direction: row;
   width: 100%;
   justify-content: space-evenly;
+  margin-bottom: 20px;
 }
 
 .home_site_card {
@@ -75,4 +76,6 @@ a .home_site_card {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    margin-bottom: 30px;
 }
