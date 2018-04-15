@@ -31,7 +31,8 @@
         <a href="<%= root_path %>" id="logo"></a>
         <nav>
           <a href="#" id="menu-icon"></a>
-          <ul>
+          <%= render partial: "layouts/menu" %>
+          <!-- <ul>
             <li>
               <a class="current"><%= link_to 'HOME', root_path %></a>
             </li>
@@ -44,7 +45,7 @@
             <li>
               <a><%= link_to 'WIRED!', "http://www.dukewired.org/" %></a>
             </li>
-          </ul>
+          </ul> -->
         </nav>
       </header>
       <div id="header_border" class="top_bottom_border"></div>
@@ -57,20 +58,7 @@
     </div>
     <div id="footer_border" class="top_bottom_border"></div>
     <footer class="header_footer">
-      <ul>
-        <li>
-          <a><%= link_to 'HOME', root_path %></a>
-        </li>
-        <li>
-          <a><%= link_to 'ABOUT', "/about" %></a>
-        </li>
-        <li>
-          <a><%= link_to 'LOCATIONS', locations_path %></a>
-        </li>
-        <li>
-          <a><%= link_to 'WIRED!', "http://www.dukewired.org/" %></a>
-        </li>
-      </ul>
+      <%= render partial: "layouts/menu" %>
     </div>
 
   </body>
