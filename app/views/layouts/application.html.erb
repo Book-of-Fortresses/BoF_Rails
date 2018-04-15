@@ -2,23 +2,24 @@
 <html>
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116957787-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116957787-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-  gtag('config', 'UA-116957787-1');
-</script>
+      gtag('config', 'UA-116957787-1');
+    </script>
 
     <title>Book of Fortresses</title>
     <%= csrf_meta_tags %>
-    <link rel="icon"
-      type="image/png"
-      href="<%= asset_path 'logos/BOF.png'%>">
+    <link rel="icon" type="image/png" href="<%= asset_path 'logos/BOF.png'%>">
     <link href="https://fonts.googleapis.com/css?family=Varela|Yantramanav" rel="stylesheet">
     <%= stylesheet_link_tag 'images' %>
     <%= stylesheet_link_tag 'locations' %>
+    <%= stylesheet_link_tag 'about' %>
     <%= stylesheet_link_tag 'main' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -26,49 +27,51 @@
   </head>
   <body>
     <div id="site_wrapper">
-    <header class="header_footer">
-      <a href="<%= root_path %>" id="logo"></a>
-      <nav>
-        <a href="#" id="menu-icon"></a>
-        <ul>
-          <li>
-            <a class="current"><%= link_to 'HOME', root_path %></a>
-          </li>
-          <li>
-            <a><%= link_to 'ABOUT', "/about" %></a>
-          </li>
-          <li>
-            <a><%= link_to 'LOCATIONS', locations_path %></a>
-          </li>
-          <li>
-            <a><%= link_to 'WIRED!', "http://www.dukewired.org/" %></a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <div id="header_border" class="top_bottom_border"></div>
-    <div id="content_wrapper">
-      <section>
-        <%= yield %>
-        <%= insert_paloma_hook %>
-      </section>
+      <header class="header_footer">
+        <a href="<%= root_path %>" id="logo"></a>
+        <nav>
+          <a href="#" id="menu-icon"></a>
+          <ul>
+            <li>
+              <a class="current"><%= link_to 'HOME', root_path %></a>
+            </li>
+            <li>
+              <a><%= link_to 'ABOUT', "/about" %></a>
+            </li>
+            <li>
+              <a><%= link_to 'LOCATIONS', locations_path %></a>
+            </li>
+            <li>
+              <a><%= link_to 'WIRED!', "http://www.dukewired.org/" %></a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div id="header_border" class="top_bottom_border"></div>
+      <div id="content_wrapper">
+        <section>
+          <%= yield %>
+          <%= insert_paloma_hook %>
+        </section>
+      </div>
     </div>
+    <div id="footer_border" class="top_bottom_border"></div>
+    <footer class="header_footer">
+      <ul>
+        <li>
+          <a><%= link_to 'HOME', root_path %></a>
+        </li>
+        <li>
+          <a><%= link_to 'ABOUT', "/about" %></a>
+        </li>
+        <li>
+          <a><%= link_to 'LOCATIONS', locations_path %></a>
+        </li>
+        <li>
+          <a><%= link_to 'WIRED!', "http://www.dukewired.org/" %></a>
+        </li>
+      </ul>
     </div>
-<div id="footer_border" class="top_bottom_border"></div>
-  <footer class="header_footer">
-    <ul>
-      <li>
-        <a><%= link_to 'HOME', root_path %></a>
-      </li>
-      <li>
-        <a><%= link_to 'LOCATIONS', locations_path %></a>
-      </li>
-      <li>
-        <a><%= link_to 'WIRED!', "http://www.dukewired.org/" %></a>
-      </li>
-    </ul>
-  </div>
-
 
   </body>
 </html>
