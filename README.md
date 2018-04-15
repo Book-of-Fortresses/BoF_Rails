@@ -1,5 +1,6 @@
 # Book of Fortresses
 * https://www.bookoffortresses.org
+* http://www.dukewired.org/projects/the-book-of-fortresses/
 
 ## Populating the Database:
 * Records are created/maintained in [Airtable](https://airtable.com/) and loaded into the application's Postgres database using the [Airtable API](https://airtable.com/api).
