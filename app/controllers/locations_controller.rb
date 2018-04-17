@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
     if @location.images.detect{|i| i.image_category == "plan"}
       js :plan_url => @location.images.detect{|i| i.image_category == "plan"}.url
     else
-      js :plan_url => asset_path("plan_unavailable.png")
+      js :plan_url => ActionController::Base.helpers.asset_path('location/plan_unavailable.png')
     end
 
     render :show
