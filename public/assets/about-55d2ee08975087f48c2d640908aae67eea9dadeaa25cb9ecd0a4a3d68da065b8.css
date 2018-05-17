@@ -1,0 +1,69 @@
+.about_page{
+  display: flex;
+  flex-direction: column;
+}
+
+.about_page h3{
+  margin-bottom: 20px;
+}
+
+.about_page h4{
+  line-height: 1.5em;
+}
+
+.about_list{
+  list-style-type: disc;
+  position: relative;
+  left: 40px;
+  margin-bottom: 15px;
+}
+
+.about_list li {
+  line-height: 1.3em;
+}
+
+.about_collaborators{
+  position: relative;
+  left: 20px;
+  margin-bottom: 20px;
+}
+
+.source {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 30px;
+  min-height: 200px;
+}
+
+.about_source_list {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about_source_list li {
+  line-height: 1.3em;
+}
+
+.about_source_image {
+  max-height: 300px;
+  width: auto;
+}
+
+#facsimile2016 {
+  content: url('about/LivroDasFortalezas2016.png');
+}
+
+#codexB {
+  content: url('about/CodexB.png');
+}
+
+#watercolors {
+  content: url('about/watercolor.png');
+}
+
+.source_info {
+  padding-left: 20px;
+}
