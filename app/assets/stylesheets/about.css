@@ -27,3 +27,43 @@
   left: 20px;
   margin-bottom: 20px;
 }
+
+.source {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 30px;
+  min-height: 200px;
+}
+
+.about_source_list {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about_source_list li {
+  line-height: 1.3em;
+}
+
+.about_source_image {
+  max-height: 300px;
+  width: auto;
+}
+
+#facsimile2016 {
+  content: url('about/LivroDasFortalezas2016.png');
+}
+
+#codexB {
+  content: url('about/CodexB.png');
+}
+
+#watercolors {
+  content: url('about/watercolor.png');
+}
+
+.source_info {
+  padding-left: 20px;
+}
