@@ -1,4 +1,13 @@
+#three_stages_wrapper {
+  margin-bottom: 40px;
+}
 
+#three_stages {
+  content: url('methods/3_Stages_BOF_Project.png');
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
 
 .videoWrapper {
   display: flex;
@@ -6,10 +15,8 @@
   width: 100%;
   height: 70vh;
   margin-bottom: 30px;
-
 }
 
 .videoWrapper iframe {
   width: calc(1.7 * 70vh);
-  height: 100%;
 }
