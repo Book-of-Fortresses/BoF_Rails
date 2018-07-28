@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @locations.sort_by{|location| location.primary_site_name}.each do |location| %>
+    <% @locations.sort_by{|location| location.itinerary_order.to_i}.each do |location| %>
       <tr>
         <td><%= link_to location.primary_site_name, location %></td>
       </tr>
