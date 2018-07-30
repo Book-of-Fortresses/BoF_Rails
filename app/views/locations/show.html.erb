@@ -5,21 +5,36 @@
   <div id="location_first_column">
     <div id="location_previous_following">
       <div id="previous">
+        <% if @location.itinerary_order > 1 %>
         <% previous = @locations.detect{|i| i.itinerary_order == (@location.itinerary_order - 1)} %>
+        <% else %>
+        <% previous = locations_path %>
+        <% end %>
         <%= link_to previous do %>
           <%= image_tag asset_path 'location/arrow_left.png' %>
           <% end %>
         <p>
-        <%= link_to previous.primary_site_name, previous %>
+          <% if @location.itinerary_order > 1 %>
+          <% previous = @locations.detect{|i| i.itinerary_order == (@location.itinerary_order - 1)} %>
+          <%= link_to previous.primary_site_name, previous %>
+          <% else %>
+          <%= link_to 'Locations', locations_path %>
+          <% end %>
+
       </p>
     </div>
       <div id="following">
         <p>
-        <% following = @locations.detect{|i| i.itinerary_order == (@location.itinerary_order + 1)} %>
-        <%= link_to following.primary_site_name, following %>
-      </p>
-      <%= link_to following do %>
-        <%= image_tag asset_path 'location/arrow_right.png' %>
+          <% if @locations.detect{|i| i.itinerary_order == (@location.itinerary_order + 1)} %>
+            <% following = @locations.detect{|i| i.itinerary_order == (@location.itinerary_order + 1)}  %>
+            <%= link_to following.primary_site_name, following %>
+          <% else %>
+            <% following = locations_path %>
+            <%= link_to 'Locations', locations_path %>
+          <% end %>
+        </p>
+        <%= link_to following do %>
+          <%= image_tag asset_path 'location/arrow_right.png' %>
         <% end %>
     </div>
   </div>
