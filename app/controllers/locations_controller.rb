@@ -6,6 +6,7 @@ class LocationsController < ApplicationController
   end
 
   def show
+    @locations = Location.all
     # Pass parameters to locations_show_view.js.erb
     js :images => @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}
     if @location.at_collaborator_id
