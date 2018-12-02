@@ -104,7 +104,7 @@
               <% features[-1] = features[-1].chomp(',') %>
                 <p hidden id="exterior_features">
                   <%= "Exterior features:" %>
-                  <p hidden>&nbsp&nbsp&nbsp
+                  <p hidden class="tag_list">
                   <% features.each do |feature| %>
                     <%= feature %> &nbsp&nbsp
                   <%end%>
@@ -117,7 +117,7 @@
               <% features[-1] = features[-1].chomp(',') %>
                 <p hidden id="fortress_features">
                   <%= "Fortress features:" %>
-                  <p hidden>&nbsp&nbsp&nbsp
+                  <p hidden class="tag_list">
                   <% features.each do |feature| %>
                     <%= feature %> &nbsp&nbsp
                   <%end%>

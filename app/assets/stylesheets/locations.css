@@ -246,3 +246,7 @@ button {
   position: relative;
   left: 0px;
 }
+
+.tag_list {
+  padding-left: 15px;
+}
