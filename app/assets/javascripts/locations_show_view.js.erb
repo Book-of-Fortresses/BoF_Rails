@@ -58,6 +58,7 @@ Paloma.controller('Locations', {
       var card_metadata = image_card.querySelector('.location_image_card_metadata');
       card_metadata.querySelectorAll('p').forEach(function(p) {
         x = p.cloneNode(true);
+        x.removeAttribute("hidden");
         viewer_metadata.appendChild(x);
       });
     }
