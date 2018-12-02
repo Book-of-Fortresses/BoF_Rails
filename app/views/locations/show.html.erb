@@ -95,6 +95,32 @@
               <% if image.image_category == "satellite image" %>
                 <p>Satellite Image</p>
               <% end %>
+              <% if image.exterior_features %>
+              <% features = image.exterior_features.split(', ') %>
+              <% features.map!{|x| x + ','} %>
+              <% features[-1] = features[-1].chomp(',') %>
+                <p hidden id="exterior_features">
+                  <%= "Exterior features:" %>
+                  <p hidden>&nbsp&nbsp&nbsp
+                  <% features.each do |feature| %>
+                    <%= feature %> &nbsp&nbsp
+                  <%end%>
+                  <p>
+                </p>
+              <% end %>
+              <% if image.fortress_features %>
+              <% features = image.fortress_features.split(', ') %>
+              <% features.map!{|x| x + ','} %>
+              <% features[-1] = features[-1].chomp(',') %>
+                <p hidden id="fortress_features">
+                  <%= "Fortress features:" %>
+                  <p hidden>&nbsp&nbsp&nbsp
+                  <% features.each do |feature| %>
+                    <%= feature %> &nbsp&nbsp
+                  <%end%>
+                  </p>
+                </p>
+              <% end %>
             </div>
             <% if image.agol_slide_embed %>
             <div class="landscape_view">
