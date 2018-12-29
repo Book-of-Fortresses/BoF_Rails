@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  include LocationsHelper
   before_action :set_location, only: [:show]
 
   def index
@@ -10,7 +11,12 @@ class LocationsController < ApplicationController
     # Pass parameters to locations_show_view.js.erb
     js :images => @location.images.select{|i| i.image_category != "plan"}.sort_by{|i| i.image_category}
     if @location.at_collaborator_id
-      js :collaborator => Collaborator.find_by(at_collaborator_id: @location.at_collaborator_id).name
+      collaborator_ids = @location.at_collaborator_id.split(',')
+      collaborators = []
+      collaborator_ids.each do |id|
+        collaborators << Collaborator.find_by(at_collaborator_id: id).name
+      end
+      js :collaborator => collaborators.join(', ')
     end
     if @location.images.detect{|i| i.image_category == "plan"}
       js :plan_url => @location.images.detect{|i| i.image_category == "plan"}.url
