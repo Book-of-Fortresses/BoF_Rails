@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404223255) do
+ActiveRecord::Schema.define(version: 20181230135441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20180404223255) do
     t.string "a360_3D_model_embed"
     t.string "agol_map_location_embed"
     t.string "agol_map_location_link"
+    t.string "stage"
   end
 
   create_table "perspective_drawings", force: :cascade do |t|
