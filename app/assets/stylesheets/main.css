@@ -85,10 +85,16 @@ a:active {
 
 header {
   height: 60px;
-	/* position: fixed; */
+	position: sticky;
 	top: 0;
 	left: 0;
 	z-index: 100;
+}
+
+#header_border {
+  position: fixed;
+  top: 60px;
+  z-index: 100;
 }
 
 header a {

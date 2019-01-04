@@ -182,6 +182,10 @@ namespace :db do
         at_collaborator_id = collaborators.join(',')
       end
 
+      if record["fields"]["stage"]
+        stage = record["fields"]["stage"].join(", ")
+      end
+
       a360_3D_model_link = record["fields"]["A360_3D_model_link"]
       a360_3D_model_embed = record["fields"]["a360_3D_model_embed"]
       agol_map_location_link = record["fields"]["agol_map_location_link"]
@@ -209,6 +213,7 @@ namespace :db do
         "itinerary_order" => itinerary_order,
         "primary_site_name" => primary_site_name,
         "slug" => slug,
+        "stage" => stage,
         "latitude" => latitude,
         "longitude" => longitude,
         "lonlat" => lonlat,
