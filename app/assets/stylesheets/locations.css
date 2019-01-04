@@ -373,13 +373,22 @@ button {
   width: 100%;
 }
 
+#current_image_metadata {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid dimgray;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+}
+
 #current_image_metadata_wrapper p {
   margin: 0;
-  line-height: 1em;
+  line-height: 1.5em;
   position: relative;
   left: 0px;
 }
 
 .tag_list {
-  padding-left: 15px;
+
 }
