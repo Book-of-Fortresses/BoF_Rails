@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  include LocationsHelper
+  helper LocationsHelper
   before_action :set_location, only: [:show]
 
   def index

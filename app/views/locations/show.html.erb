@@ -20,7 +20,6 @@
           <% else %>
           <%= link_to 'Locations', locations_path %>
           <% end %>
-
       </p>
     </div>
       <div id="following">
@@ -41,14 +40,20 @@
 
     <div id="location_first_column_first_row">
       <div id="location_metadata">
-        <% if @location.itinerary_order %>
+        <!-- <% if @location.itinerary_order %> -->
           <p>Itinerary Order: <%= @location.itinerary_order %></p>
-        <% end %>
+        <!-- <% end %> -->
         <% if @location.latitude %>
           <p>Latitude: <%= @location.latitude %></p>
         <% end %>
         <% if @location.longitude %>
           <p>Longitude: <%= @location.longitude %></p>
+        <% end %>
+
+        <% if secondary_sites(@location).length > 0 %>
+          <p>
+            Secondary Sites: <%= secondary_sites(@location) %>
+          </p>
         <% end %>
         <% if @location.wikipedia_link %>
           <p><%= link_to 'Wikipedia', @location.wikipedia_link, target: :_blank %></p>
