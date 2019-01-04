@@ -118,13 +118,13 @@
               <% end %>
               <% if image.fortress_features %>
               <% features = image.fortress_features.split(', ') %>
-              <% features.map!{|x| x + ','} %>
-              <% features[-1] = features[-1].chomp(',') %>
+              <% features.map!{|x| x + ' | '} %>
+              <% features[-1] = features[-1].chomp(' | ') %>
                 <p hidden id="fortress_features">
                   <%= "Fortress features:" %>
                   <p hidden class="tag_list">
                   <% features.each do |feature| %>
-                    <%= feature %> &nbsp&nbsp
+                    <%= feature %>
                   <%end%>
                   </p>
                 </p>
