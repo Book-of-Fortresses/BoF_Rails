@@ -1,29 +1,9 @@
 
-
-<h1 class="title">Duarte de Armas' <em>Livro das Fortalezas</em></h1>
+<div id="home_title_wrapper">
+  <h1 class="title" id="home_title">Duarte de Armas' <em>Livro das Fortalezas</em></h1>
+  <h2 id="subtitle">The book of Fortresses is a digital art history project that spatially reconstructs <br/> a rare early-16th century Portuguese source by the same name.</h2>
+</div>
 <br/>
-<p>
-  The aim of the Book of Fortresses project is to spatially reconstruct an exceptional architectural source from early modern Portugal called the Livro das Fortalezas (Book of Fortresses). The book contains 120 perspective drawings and architectural plans of more than 55 fortresses and fortified towns along the border between Portugal and Spain. It also contains a brief but clear itinerary followed by the book’s author (a Portuguese Squire named Duarte de Armas) when he traveled to each site in 1509.
-</p>
-<p>
-  The digital project takes a multi-scale approach to the book. At the architectural scale, the group has begun constructing parametric 3D models of the fortifications according to Duarte de Armas' measured plans and perspective drawings. These perspective drawings are also oriented to a landscape within a 3D GIS. Finally, at the national / peninsula scale, Duarte de Armas' itinerary is plotted with viewshed analyses from each site in order to analyze whether it is appropriate to refer to the string of fortresses as a "chain" or "borderline." Thus far, 4 undergraduate students have created 8 parametric 3D models of the castles at the beginning of Duarte de Armas’ itinerary. The students have also been building up a database of information about each drawing using a cloud-based software called Airtable. This database also forms the back-end of the project website.
-</p>
-<p>
-  Summer 2019 research will add another level of spatial analysis to the project in the form of photogrammetric scans of the extant masonry at the sites that were modeled during the 2017-18 academic year. This portion of the project is designed to discover the nature of the artist’s rendering of perspective, how “panoramic” his perspective drawings were, and how many vantage points might have been required to capture the architecture and surrounding landscape in each image. This data will also be added as a layer in the 3D GIS system to help align the 3D models and test wall measurements identified in Duarte de Armas’ plan drawings.
-</p>
-<p>
-  This site aggregates a lot of the work that has been done on the project, especially the 3D GIS layers. It is in a near constant state of development as more fortresses are modeled or scanned and as the images of the book are annotated and structured in the database. At the current stage there are also high-resolution scans of the recent facsimile of the book. The list of location pages is organized according to Duarte de Armas' original itinerary in 1509.
-</p>
-<br/>
-<p>
-This project is in collaboration with <a href="http://www.dukewired.org/projects/the-book-of-fortresses/">Wired!</a> at Duke University.
-</p>
-<br/>
-<br/>
-<div class="parallax"></div>
-<br/>
-<br/>
-<h2>Explore Recent Sites:</h2>
 <br/>
 <div id="home_sites_gallery_wrapper">
   <div id="home_sites_gallery">
@@ -56,9 +36,93 @@ This project is in collaboration with <a href="http://www.dukewired.org/projects
   </a>
   </div>
 </div>
+<p>
+  The aim of the Book of Fortresses project is to spatially reconstruct an exceptional architectural source from early modern Portugal called the Livro das Fortalezas (Book of Fortresses). The book contains 120 perspective drawings and architectural plans of more than 55 fortresses and fortified towns along the border between Portugal and Spain. It also contains a brief but clear itinerary followed by the book’s author (a Portuguese Squire named Duarte de Armas) when he traveled to each site in 1509.
+</p>
+<p>
+  The digital project takes a multi-scale approach to the book. At the architectural scale, the group has begun constructing parametric 3D models of the fortifications according to Duarte de Armas' measured plans and perspective drawings. These perspective drawings are also oriented to a landscape within a 3D GIS. Finally, at the national / peninsula scale, Duarte de Armas' itinerary is plotted with viewshed analyses from each site in order to analyze whether it is appropriate to refer to the string of fortresses as a "chain" or "borderline." Thus far, 4 undergraduate students have created 8 parametric 3D models of the castles at the beginning of Duarte de Armas’ itinerary. The students have also been building up a database of information about each drawing using a cloud-based software called Airtable. This database also forms the back-end of the project website.
+</p>
+<p>
+  Summer 2019 research will add another level of spatial analysis to the project in the form of photogrammetric scans of the extant masonry at the sites that were modeled during the 2017-18 academic year. This portion of the project is designed to discover the nature of the artist’s rendering of perspective, how “panoramic” his perspective drawings were, and how many vantage points might have been required to capture the architecture and surrounding landscape in each image. This data will also be added as a layer in the 3D GIS system to help align the 3D models and test wall measurements identified in Duarte de Armas’ plan drawings.
+</p>
+<p>
+  This site aggregates a lot of the work that has been done on the project, especially the 3D GIS layers. It is in a near constant state of development as more fortresses are modeled or scanned and as the images of the book are annotated and structured in the database. At the current stage there are also high-resolution scans of the recent facsimile of the book. The list of location pages is organized according to Duarte de Armas' original itinerary in 1509.
+</p>
+<br/>
+<p>
+This project is in collaboration with <a href="http://www.dukewired.org/projects/the-book-of-fortresses/">Wired!</a> at Duke University.
+</p>
 <br/>
 <br/>
+<div class="parallax"></div>
 <br/>
+<br/>
+<h2>Explore Featured Sites:</h2>
+<br/>
+<br/>
+<div id="home_sites_gallery_wrapper">
+  <div id="home_sites_gallery">
+    <!-- Castro Marim -->
+      <a href="<%= location_path ('noudar') %>" class="home_site_card">
+      <div class="home_site_card_image" id="home_site_4">
+      </div>
+      <div class="home_site_card_metadata">
+        <br/>
+        <h3>Noudar</h3>
+      </div>
+    </a>
+    <!-- Alcoutim -->
+    <a href="<%= location_path ('penha-garcia') %>" class="home_site_card">
+    <div class="home_site_card_image" id="home_site_5">
+    </div>
+    <div class="home_site_card_metadata">
+      <br/>
+      <h3>Penha Garcia</h3>
+    </div>
+  </a>
+    <!-- Serpa -->
+    <a href="<%= location_path ('freixo-de-espada-a-cinta') %>" class="home_site_card">
+    <div class="home_site_card_image" id="home_site_6">
+    </div>
+    <div class="home_site_card_metadata">
+      <br/>
+      <h3>Freixo de Espada à Cinta</h3>
+    </div>
+  </a>
+  </div>
+</div>
+<br/>
+<div id="home_sites_gallery_wrapper">
+  <div id="home_sites_gallery">
+    <!-- Castro Marim -->
+      <a href="<%= location_path ('moura') %>" class="home_site_card">
+      <div class="home_site_card_image" id="home_site_7">
+      </div>
+      <div class="home_site_card_metadata">
+        <br/>
+        <h3>Moura</h3>
+      </div>
+    </a>
+    <!-- Alcoutim -->
+    <a href="<%= location_path ('castro-marim') %>" class="home_site_card">
+    <div class="home_site_card_image" id="home_site_8">
+    </div>
+    <div class="home_site_card_metadata">
+      <br/>
+      <h3>Castro Marim</h3>
+    </div>
+  </a>
+    <!-- Serpa -->
+    <a href="<%= location_path ('serpa') %>" class="home_site_card">
+    <div class="home_site_card_image" id="home_site_9">
+    </div>
+    <div class="home_site_card_metadata">
+      <br/>
+      <h3>Serpa</h3>
+    </div>
+  </a>
+  </div>
+</div>
 <div id="home_row2">
   <h2>View All Locations: <%= link_to 'Locations', locations_path %></h2>
 </div>

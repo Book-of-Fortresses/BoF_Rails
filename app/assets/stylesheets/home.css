@@ -1,3 +1,19 @@
+#home_title_wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+#home_title {
+  align-self: center;
+}
+
+#subtitle {
+  text-align: center;
+}
+
 #home_sites_gallery_wrapper {
   display: flex;
   flex-direction: row;
@@ -22,15 +38,39 @@
 }
 
 #home_site_1 {
-  background-image: url( 'home/mertola.png');
+  background-image: url( 'home/Mertola2.png');
 }
 
 #home_site_2 {
-  background-image: url( 'home/alcoutim_codexa.jpg');
+  background-image: url( 'home/Alcoutim2.png');
 }
 
 #home_site_3 {
-  background-image: url( 'home/alandroal.png');
+  background-image: url( 'home/Alandroal2.png');
+}
+
+#home_site_4 {
+  background-image: url( 'home/noudar.png');
+}
+
+#home_site_5 {
+  background-image: url( 'home/penha_garcia.png');
+}
+
+#home_site_6 {
+  background-image: url( 'home/freixo.png');
+}
+
+#home_site_7 {
+  background-image: url( 'home/moura.png');
+}
+
+#home_site_8 {
+  background-image: url( 'home/castro_marim.png');
+}
+
+#home_site_9 {
+  background-image: url( 'home/serpa2.png');
 }
 
 .home_site_card_image {

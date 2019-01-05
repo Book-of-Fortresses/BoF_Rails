@@ -162,6 +162,7 @@ Paloma.controller('Locations', {
         // create model metadata & display below viewer
         var model_metadata = document.createTextNode("Modeled by: " + collaborator);
         var model_p = document.createElement('p');
+        model_p.setAttribute("id", "model_metadata");;
         model_p.appendChild(model_metadata);
         viewer_metadata.appendChild(model_p);
       }
