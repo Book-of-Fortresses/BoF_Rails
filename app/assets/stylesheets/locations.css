@@ -389,6 +389,10 @@ button {
   left: 0px;
 }
 
+#model_metadata {
+  text-align: center;
+}
+
 .tag_list {
 
 }
