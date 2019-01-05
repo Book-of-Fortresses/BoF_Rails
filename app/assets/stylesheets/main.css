@@ -190,12 +190,12 @@ section {
 
 footer {
   display: flex;
-  height: 60px;
+  height: 15px;
   align-items: center;
   justify-content: center;
 }
 
-footer ul {
+/* footer ul {
   display: flex;
   flex-direction: row;
   width: 40%;
@@ -210,7 +210,7 @@ footer ul li a:link {
 footer ul li a:visited {
   color: #F9F5E7;
   text-decoration: none;
-}
+} */
 
 /*MEDIA QUERY*/
 @media only screen and (max-width : 699px) {

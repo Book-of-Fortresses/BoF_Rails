@@ -165,7 +165,7 @@ tr {
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 #location_first_column {
@@ -366,7 +366,7 @@ button {
 }
 
 #current_image_metadata_wrapper {
-  margin-top: 5px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -375,11 +375,13 @@ button {
 
 #current_image_metadata {
   width: 100%;
-  min-height: 80px;
+  min-height: 60px;
   border: 1px solid dimgray;
   border-radius: 5px;
-  padding: 20px;
+  padding: 15px;
+  padding-bottom: 5px;
   margin: 10px;
+  margin-top: 5px;
 }
 
 #current_image_metadata_wrapper p {
