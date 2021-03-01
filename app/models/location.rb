@@ -12,6 +12,7 @@ class Location < ApplicationRecord
     collaborators.map(&:name).join(', ')
   end
 
+  # ex at_collaborator_id: "usr6jZBvB6JA46dMe,usrdrMXLmfCGRX390,usrRiFLmaKkNIn2E2"
   def collaborator_ids
     at_collaborator_id.split(',')
   end
@@ -30,6 +31,7 @@ class Location < ApplicationRecord
     Location.find_by(itinerary_order: following_itinerary_order)
   end
 
+  # other locations that appear in the location's images
   def secondary_sites
     sites = images.each_with_object([]) do |image, sites|
       if image.secondary_site_name && image.secondary_site_name != 'None'
