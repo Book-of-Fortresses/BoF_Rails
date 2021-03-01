@@ -96,7 +96,7 @@ tr {
   align-items: center;
 }
 
-#stage-icons {
+.stage-icon {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -104,7 +104,7 @@ tr {
   margin-right: 5px;
 }
 
-#stage-icons img {
+.stage-icon img {
   /* flex-basis: 20%; */
   height: 1.5em;
   width: auto;

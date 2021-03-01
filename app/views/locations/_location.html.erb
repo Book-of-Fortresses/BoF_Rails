@@ -1,0 +1,18 @@
+<tr>
+  <td class='stage-icon'>
+    <%= featured_icon(location) %>
+  </td>
+  <td class='stage-icon'>
+    <%= landscape_icon(location) %>
+  </td>
+  <td class='stage-icon'>
+    <%= model_icon(location) %>
+  </td>
+  <td class='stage-icon'>
+    <%= views_icon(location) %>
+  </td>
+  <td class='stage-icon'>
+    <%= photogrammetry_icon(location) %>
+  </td>
+  <td id='location-name'><%= link_to location.primary_site_name, location %></td>
+</tr>
