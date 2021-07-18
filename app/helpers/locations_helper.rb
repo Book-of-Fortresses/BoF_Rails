@@ -6,31 +6,31 @@ module LocationsHelper
   end
 
   def featured_icon(location)
-    return blank_icon unless location.stage.include? 'Prototype Site'
+    return blank_icon unless location&.stage&.include? 'Prototype Site'
 
     image_tag "locations/icons/font_awesome/PNG/star-solid.png", title: 'Featured Site'
   end
 
   def landscape_icon(location)
-    return blank_icon unless location.stage.include? 'Virtual Landscape Begun'
+    return blank_icon unless location&.stage&.include? 'Virtual Landscape Begun'
 
     image_tag "locations/icons/font_awesome/PNG/mountain-solid.png", title: 'Virtual Landscape'
   end
 
   def model_icon(location)
-    return blank_icon unless location.stage.include? '3D Modeling Begun'
+    return blank_icon unless location&.stage&.include? '3D Modeling Begun'
 
     image_tag "locations/icons/font_awesome/PNG/cube-solid.png", title: '3D Model'
   end
 
   def views_icon(location)
-    return blank_icon unless location.stage.include? '3D Views Added to ArcGIS'
+    return blank_icon unless location&.stage&.include? '3D Views Added to ArcGIS'
 
     image_tag "locations/icons/font_awesome/PNG/images-solid.png", title: '3D Views'
   end
 
   def photogrammetry_icon(location)
-    return blank_icon unless location.stage.include? 'Photogrammetry Begun'
+    return blank_icon unless location&.stage&.include? 'Photogrammetry Begun'
 
     image_tag "locations/icons/font_awesome/PNG/camera-solid.png", title: 'Photogrammetry'
   end
