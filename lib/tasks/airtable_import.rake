@@ -70,7 +70,6 @@ namespace :db do
   task :load_images => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Images/?offset='+offset
     response = HTTParty.get(url, headers: {"Authorization" => ENV[AIRTABLE_TOKEN]})
-    byebug
     # saves offset value from end of json to submit with next request
     if response.parsed_response["offset"]
       offset = response.parsed_response["offset"]
@@ -159,7 +158,6 @@ namespace :db do
   task :load_locations => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Locations'
     response = HTTParty.get(url, headers: {"Authorization" => ENV[AIRTABLE_TOKEN]})
-    byebug
     locations_json = response.parsed_response["records"].to_a
 
     locations_json.each do |record|

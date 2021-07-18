@@ -5,36 +5,81 @@ module LocationsHelper
     @locations.sort_by{|location| location.itinerary_order.to_i}
   end
 
-  def featured_icon(location)
-    return blank_icon unless location&.stage&.include? 'Prototype Site'
-
-    image_tag "locations/icons/font_awesome/PNG/star-solid.png", title: 'Featured Site'
+  # Featured Site
+  def featured_site_text
+    'Featured Site'
   end
 
-  def landscape_icon(location)
-    return blank_icon unless location&.stage&.include? 'Virtual Landscape Begun'
+  def star_icon
+    image_tag "locations/icons/font_awesome/PNG/star-solid.png", title: 'star icon'
+  end
 
-    image_tag "locations/icons/font_awesome/PNG/mountain-solid.png", title: 'Virtual Landscape'
+  def featured_icon(location)
+    return blank_icon unless location&.stage&.include? featured_site_text
+
+    star_icon
+  end
+
+  # 3D Model
+  def model_text
+    'Fusion360 Model'
+  end
+  def cube_icon
+    image_tag "locations/icons/font_awesome/PNG/cube-solid.png", title: 'cube icon'
   end
 
   def model_icon(location)
-    return blank_icon unless location&.stage&.include? '3D Modeling Begun'
+    return blank_icon unless location&.stage&.include? model_text
 
-    image_tag "locations/icons/font_awesome/PNG/cube-solid.png", title: '3D Model'
+    cube_icon
+  end
+
+  # Drone Photogrammetry
+  def drone_text
+   'Drone Photogrammetry'
+  end
+
+  def copter_icon
+    image_tag "locations/icons/font_awesome/PNG/helicopter.png", title: 'helicopter icon'
+  end
+
+  def drone_icon(location)
+    return blank_icon unless location&.stage&.include? drone_text
+
+    copter_icon
+  end
+
+  # Views
+  def views_text
+    '3D Views Added to ArcGIS'
+  end
+
+  def globe_icon
+    image_tag "locations/icons/font_awesome/PNG/globe.png", title: 'globe icon'
   end
 
   def views_icon(location)
-    return blank_icon unless location&.stage&.include? '3D Views Added to ArcGIS'
+    return blank_icon unless location&.stage&.include? views_text
 
-    image_tag "locations/icons/font_awesome/PNG/images-solid.png", title: '3D Views'
+    globe_icon
   end
 
-  def photogrammetry_icon(location)
-    return blank_icon unless location&.stage&.include? 'Photogrammetry Begun'
-
-    image_tag "locations/icons/font_awesome/PNG/camera-solid.png", title: 'Photogrammetry'
+  # Photographs
+  def photographed_text
+    'Photographed'
   end
 
+  def camera_icon
+    image_tag "locations/icons/font_awesome/PNG/retro-camera.png", title: 'camera icon'
+  end
+
+  def photographed_icon(location)
+    return blank_icon unless location&.stage&.include? photographed_text
+
+    camera_icon
+  end
+
+  # Blank filler icon
   def blank_icon
     image_tag "locations/icons/font_awesome/PNG/blank.png"
   end
