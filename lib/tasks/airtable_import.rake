@@ -37,16 +37,17 @@ namespace :db do
   desc "Import collaborators from Airtable"
   task :load_collaborators => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Collaborators'
-    response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
-
+    response = HTTParty.get(url, headers: {"Authorization" => ENV[AIRTABLE_TOKEN]})
     collaborators_json = response.parsed_response["records"].to_a
 
     collaborators_json.each do |record|
       name = record["fields"]["name"]
       at_collaborator_table_id = record["id"]
       major = record["fields"]["major"]
-      at_collaborator_id = record["fields"]["collaborator"]["id"]
-      email = record["fields"]["collaborator"]["email"]
+      if record["fields"]["collaborator"]
+        at_collaborator_id = record["fields"]["collaborator"]["id"]
+        email = record["fields"]["collaborator"]["email"]
+      end
       graduation = record["fields"]["graduation"]
       active = record["fields"]["active"]
       at_collaborator_table_time_created = record["createdTime"]
@@ -68,8 +69,8 @@ namespace :db do
   offset = ''
   task :load_images => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Images/?offset='+offset
-    response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
-
+    response = HTTParty.get(url, headers: {"Authorization" => ENV[AIRTABLE_TOKEN]})
+    byebug
     # saves offset value from end of json to submit with next request
     if response.parsed_response["offset"]
       offset = response.parsed_response["offset"]
@@ -157,8 +158,8 @@ namespace :db do
   desc "Import locations from Airtable"
   task :load_locations => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Locations'
-    response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
-
+    response = HTTParty.get(url, headers: {"Authorization" => ENV[AIRTABLE_TOKEN]})
+    byebug
     locations_json = response.parsed_response["records"].to_a
 
     locations_json.each do |record|

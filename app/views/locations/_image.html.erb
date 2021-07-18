@@ -1,0 +1,35 @@
+  <div class="location_image_card" id="image_<%= image_counter %>">
+    <div class="location_image_card_thumbnail">
+      <%= image_tag(image.large_thumbnail_url, height: 'auto', width: '200') %>
+    </div>
+    <div class="location_image_card_metadata">
+      <% if image.view_direction %>
+        <p><strong>View: <%= image.view_direction %></strong></p>
+      <% end %>
+      <p><strong><%= image_source(image) %></strong></p>
+      <% if image.image_category == "satellite image" %>
+        <p><strong>Satellite Image</strong></p>
+      <% end %>
+      <% if image.exterior_features %>
+        <p hidden id="exterior_features">
+          <p hidden class="tag_list">
+          <strong><%= "Exterior features: " %></strong>
+            <%= image.exterior_features %>
+          <p>
+        </p>
+      <% end %>
+      <% if image.fortress_features %>
+        <p hidden id="fortress_features">
+          <p hidden class="tag_list">
+            <strong><%= "Fortress features: " %></strong>
+            <%= image.fortress_features %>
+          </p>
+        </p>
+      <% end %>
+    </div>
+    <% if image.agol_slide_embed %>
+    <div class="landscape_view">
+      <p style="color: #577C92;"><em>Landscape View</em></p>
+    </div>
+    <% end %>
+  </div>
