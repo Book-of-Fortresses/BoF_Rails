@@ -1,17 +1,88 @@
 
 <div id=locations-index-wrapper>
-  <div id="locations_wrapper">
-    <div id="locations_header_wrapper">
-      <h1>Locations</h1>
-      <%= render 'icon_key' %>
+<div id="locations_wrapper">
+  <div id="locations_header_wrapper">
+    <h1>Locations</h1>
+  <div id="icon-key">
+    <div>
+      <%= image_tag "locations/icons/font_awesome/PNG/star-solid.png", title: 'Featured Site' %>
+      <p>
+        Featured Site
+      </p>
     </div>
-    <div id="locations_list_wrapper">
-      <%= render 'locations_list' %>
+    <div>
+      <%= image_tag "locations/icons/font_awesome/PNG/mountain-solid.png", title: 'Virtual Landscape'  %>
+      <p>
+        Virtual Landscape
+      </p>
+    </div>
+    <div>
+      <%= image_tag "locations/icons/font_awesome/PNG/cube-solid.png", title: '3D Model'  %>
+      <p>
+        3D Model Begun
+      </p>
+    </div>
+    <div>
+      <%= image_tag "locations/icons/font_awesome/PNG/images-solid.png", title: '3D Views'  %>
+      <p>
+        3D Views Mapped
+      </p>
     </div>
   </div>
-  <div id="locations_map">
-    <div class="embed-container">
-      <iframe  frameborder="0" scrolling="no" allowfullscreen src="https://www.arcgis.com/home/webscene/viewer.html?webscene=a8924bf93b41447f92541bf553b6b4e7&viewpoint=cam:-8.03415897,36.16995653,563384.379;4.565,29.649&ui=min"></iframe>
-    </div>
   </div>
+  <div id="locations_list_wrapper">
+    <table id="locations_list">
+      <tbody>
+        <% @locations.sort_by{|location| location.itinerary_order.to_i}.each do |location| %>
+          <tr>
+            <td id="stage-icons">
+              <% if location.stage %>
+                <% if location.stage.include? ('Prototype Site') %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/star-solid.png", title: 'Featured Site' %>
+                <% else %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/blank.png" %>
+                <% end %>
+                <% if location.stage.include? ('Virtual Landscape Begun') %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/mountain-solid.png", title: 'Virtual Landscape'  %>
+                <% else %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/blank.png" %>
+                <% end %>
+                <% if location.stage.include? ('3D Modeling Begun') %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/cube-solid.png", title: '3D Model'  %>
+                <% else %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/blank.png" %>
+                <% end %>
+                <% if location.stage.include? ('3D Views Added to ArcGIS') %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/images-solid.png", title: '3D Views'  %>
+                <% else %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/blank.png" %>
+                <% end %>
+                <!-- <% if location.stage.include? ('Photogrammetry Begun') %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/camera-solid.png" %>
+                <% else %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/blank.png" %>
+                <% end %> -->
+                <% else %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/blank.png" %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/blank.png" %>
+                  <%= image_tag "locations/icons/font_awesome/PNG/blank.png" %>
+                  <!-- <%= image_tag "locations/icons/font_awesome/PNG/blank.png" %> -->
+                  <%= image_tag "locations/icons/font_awesome/PNG/blank.png" %>
+                <% end %>
+              </td>
+            <td id='location-name'><%= link_to location.primary_site_name, location %></td>
+          </tr>
+        <% end %>
+        <br/>
+        <br/>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div id="locations_map">
+<!-- <style>.embed-container {position: relative; padding-bottom: 150%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style> -->
+  <div class="embed-container">
+    <iframe  frameborder="0" scrolling="no" allowfullscreen src="https://www.arcgis.com/home/webscene/viewer.html?webscene=a8924bf93b41447f92541bf553b6b4e7&viewpoint=cam:-8.03415897,36.16995653,563384.379;4.565,29.649&ui=min"></iframe>
+  </div>
+</div>
 </div>
