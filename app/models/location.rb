@@ -14,6 +14,7 @@ class Location < ApplicationRecord
 
   # ex at_collaborator_id: "usr6jZBvB6JA46dMe,usrdrMXLmfCGRX390,usrRiFLmaKkNIn2E2"
   def collaborator_ids
+    return [] if at_collaborator_id.blank?
     at_collaborator_id.split(',')
   end
 
