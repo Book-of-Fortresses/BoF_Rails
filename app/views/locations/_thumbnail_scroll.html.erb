@@ -1,0 +1,17 @@
+<div class="MagicScroll mcs-border" style="height: 200px; margin-bottom: 20px;" data-options="step: 1">
+  <% if @location.a360_3D_model_embed %>
+    <%= location_3d_model %>
+  <% end %>
+
+  <%= render partial: 'thumbnail', collection: @location.images, as: :image %>
+
+  <!-- <a href="/page-1/"><img src="example1.jpg"/></a>
+  <a href="/page-2/"><img src="example2.jpg"/></a>
+  <a href="/page-3/"><img src="example3.jpg"/></a>
+  <a href="/page-4/"><img src="example4.jpg"/></a>
+  <a href="/page-5/"><img src="example5.jpg"/></a>
+  <a href="/page-6/"><img src="example6.jpg"/></a>
+  <a href="/page-7/"><img src="example7.jpg"/></a>
+  <a href="/page-8/"><img src="example8.jpg"/></a>
+  <a href="/page-9/"><img src="example9.jpg"/></a> -->
+</div>
