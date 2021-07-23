@@ -233,7 +233,7 @@ namespace :db do
   offset = ''
   task :load_events => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Events/?offset='+offset
-    response = HTTParty.get(url, headers: {"Authorization" => 'Bearer keyRKCIVMNmChIkk5'})
+    response = HTTParty.get(url, headers: {"Authorization" => ENV[AIRTABLE_TOKEN]})
 
     # saves offset value from end of json to submit with next request
     if response.parsed_response["offset"]
