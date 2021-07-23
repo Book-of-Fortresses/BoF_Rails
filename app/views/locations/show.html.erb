@@ -1,28 +1,21 @@
-<h1 id='title'><%= @location.primary_site_name %></h1>
-<br/>
-<div id="location_wrapper">
-
-  <div id="location_first_column">
-    <%= render 'previous_next' %>
-    <div id="location_first_column_first_row">
-      <%= render 'metadata' %>
-      <div id="location_plan">
-        <%= location_plan %>
+<div id="location-wrapper">
+  <%= render 'header' %>
+  <%= render 'thumbnail_scroll' %>
+  <div id="viewers-wrapper">
+    <div id="location-first-column" class='location-column'>
+      <%= render 'viewer_select_left' %>
+      <div id="left-viewer-wrapper" class="viewer-wrapper">
+        <%= render '3d_model_left' %>
+        <%= render 'openseadragon_left' %>
       </div>
     </div>
-    <div id="location_image_gallery_wrapper">
-      <div id="location_image_gallery">
-        <%= render '3d_model_thumbnail' %>
-        <%= render partial: 'image', collection: @location.images_excluding_plan, as: :image %>
+    <div id="location-second-column" class='location-column'>
+      <%= render 'viewer_select_right' %>
+      <div id="right-viewer-wrapper" class="viewer-wrapper">
+        <%= render '3d_model_right' %>
+        <%= render 'openseadragon_right' %>
       </div>
     </div>
-  </div>
-
-  <div id="location_second_column">
-    <div id="viewer_wrapper">
-      <%= render '3d_model' %>
-      <%= render 'openseadragon' %>
-      <%= render 'below_viewer_wrapper' %>
-    </div>
-  </div>
+  </div> <!-- viewers-wrapper -->
+  <%= render 'metadata' %>
 </div>

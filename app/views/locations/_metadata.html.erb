@@ -1,21 +1,31 @@
-<div id="location_metadata">
-  <p>Itinerary Order: <%= @location.itinerary_order %></p>
-  <% if @location.latitude %>
-    <p>Latitude: <%= @location.latitude %></p>
-  <% end %>
-  <% if @location.longitude %>
-    <p>Longitude: <%= @location.longitude %></p>
-  <% end %>
-  <% if @location.secondary_sites %>
-    <p>Secondary Sites: <%= formatted_secondary_sites %></p>
-  <% end %>
-  <% if @location.wikipedia_link %>
-    <p><%= link_to 'Wikipedia', @location.wikipedia_link, target: :_blank %></p>
-  <% end %>
-  <% if @location.fortalezas_link %>
-    <p><%= link_to 'Fortalezas.org', @location.fortalezas_link, target: :_blank %></p>
-  <% end %>
-  <% if @location.castillosnet_link %>
-    <p><%= link_to 'Castillos.net', @location.castillosnet_link, target: :_blank %></p>
-  <% end %>
+<div id="location-metadata">
+  <div id="location-events">
+    <div id="transfer-events" class="event-category">
+      <h3>Transfers of Possession</h3>
+      <%= render partial: 'event', collection: @location.transfer_events, as: :event %>
+    </div>
+    <div id="building-events" class="event-category">
+      <h3>Building Activity</h3>
+      <%= render partial: 'event', collection: @location.building_events, as: :event %>
+    </div>
+    <div id="military-events" class="event-category">
+      <h3>Military Activity</h3>
+      <%= render partial: 'event', collection: @location.military_events, as: :event %>
+    </div>
+    <div id="charter-events" class="event-category">
+      <h3>Charter/Treaty</h3>
+      <%= render partial: 'event', collection: @location.charter_events, as: :event %>
+    </div>
+  </div>
+  <div id="event-sources">
+    <% if event_sources? %>
+      <p>Event Sources: <%= event_sources_text.join(", ") .html_safe %></p>
+    <% end %>
+  </div>
+  <div id="event-credit">
+    <p>Event Research by Brittany Forniotis</p>
+  </div>
+  <div id="model-credit">
+    <p>Fusion 360 Model by: <%= @location.model_collaborators %>
+  </div>
 </div>

@@ -1,0 +1,7 @@
+<div id="openseadragon_image_left_<%= image.id %>" class="openseadragon" style=<%= image_display(image) %>></div>
+
+<% if image.agol_slide_embed %>
+  <div id="openseadragon_image_left_<%= image.id %>L" class="openseadragon" style='display: none;'>
+    <%= image.agol_slide_embed .html_safe %>
+  </div>
+<% end %>

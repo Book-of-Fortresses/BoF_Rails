@@ -1,0 +1,7 @@
+<div class="MagicScroll mcs-border" style="height: 100px; margin-bottom: 20px;" data-options="step: 1" data-options="lazyLoad: true;">
+  <% if @location.a360_3D_model_embed %>
+    <%= location_3d_model %>
+  <% end %>
+
+  <%= render partial: 'thumbnail', collection: @location.images_excluding_satellite, as: :image %>
+</div>
