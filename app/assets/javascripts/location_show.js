@@ -16,6 +16,20 @@ Paloma.controller('Locations', {
 
     var images = this.params.images;
 
+    // set viewer size for 3D GIS
+    // Set viewer size
+    function size_viewer(iframe, index){
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+    }
+
+    function startUp(){
+      var iframes = document.getElementsByTagName("iframe");
+      var iframes_array = Array.prototype.slice.call(iframes);
+
+      iframes_array.forEach(size_viewer);
+    }
+
     // Create openseadragon viewer for each image
     images.forEach(createViewer);
     function createViewer(image, index) {
@@ -38,6 +52,7 @@ Paloma.controller('Locations', {
       });
 
     }
+    startUp();
   }
 });
 
