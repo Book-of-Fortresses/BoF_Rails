@@ -185,12 +185,11 @@ module LocationsHelper
     end
     if image.view_direction
        title.concat(" - #{image.view_direction}")
+    elsif image.image_category == "plan"
+      title.concat(" Plan")
     end
     if image.image_category == "satellite image"
       title.concat(" Satellite Image")
-    end
-    if image.image_category == "plan"
-      title.concat(" Plan")
     end
     title.strip
   end
