@@ -83,6 +83,6 @@ class Location < ApplicationRecord
   end
 
   def default_viewer_id
-    images_excluding_satellite.detect{ |i| i.agol_slide_embed.present? }.id
+    images_excluding_satellite.detect{|i| (i.image_category != "plan" && i.agol_slide_embed.present?) }.id
   end
 end
