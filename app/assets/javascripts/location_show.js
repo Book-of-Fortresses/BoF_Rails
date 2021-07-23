@@ -102,8 +102,10 @@ function hideRightViewers() {
 function changeRightView() {
   hideRightViewers();
   x = document.getElementById("views2").value;
+  console.log(x);
   selected_image = document.getElementById('openseadragon_image_right_'+x)
   show(document.getElementById('openseadragon_image_right_'+x));
+  // console.log(x);
   if (x == "3D") {
     reload_model(selected_image);
   }

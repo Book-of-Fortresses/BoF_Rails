@@ -184,7 +184,7 @@ module LocationsHelper
       title.concat(image.formatted_source)
     end
     if image.view_direction
-       title.concat("<br/>view: #{image.view_direction}")
+       title.concat(" - #{image.view_direction}")
     end
     if image.image_category == "satellite image"
       title.concat(" Satellite Image")
