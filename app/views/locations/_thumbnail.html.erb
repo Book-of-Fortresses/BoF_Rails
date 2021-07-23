@@ -1,6 +1,4 @@
-<span><a href="/page-1/">
-  <%= image_tag(image.large_thumbnail_url) %></a>
-  <% if image.agol_slide_embed %>
-    Landscape View
-  <% end %>
-</span>
+<a href=""><%= image_tag(image.large_thumbnail_url) %><%= image.title %></a>
+  <%# <% if image.agol_slide_embed %>
+    <%# Landscape View %>
+  <%# <% end %>

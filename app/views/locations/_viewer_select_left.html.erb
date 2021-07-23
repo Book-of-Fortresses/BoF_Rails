@@ -2,9 +2,9 @@
   <select name="views1" id="views1" onchange="changeLeftView()">
     <option value="" disabled selected>Select a view</option>
     <% if @location.a360_3D_model_embed %>
-      <option value="3D_model">3D Model</option>
+      <option value="3D">3D Model</option>
     <% end %>
 
-    <%= render partial: 'viewer_select_option', collection: @location.images, as: :image %>
+    <%= render partial: 'viewer_select_option', collection: @location.images_excluding_satellite, as: :image %>
   </select>
 </div>

@@ -228,4 +228,55 @@ namespace :db do
       )
     end
   end
+
+  desc "Import events from Airtable"
+  offset = ''
+  task :load_events => [:environment] do
+    url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Events/?offset='+offset
+    response = HTTParty.get(url, headers: {"Authorization" => 'Bearer keyRKCIVMNmChIkk5'})
+
+    # saves offset value from end of json to submit with next request
+    if response.parsed_response["offset"]
+      offset = response.parsed_response["offset"]
+    else
+      offset = ''
+    end
+    puts "offset: " + offset
+
+    events_json = response.parsed_response["records"].to_a
+
+    events_json.each do |record|
+      at_event_id = record["id"]
+      notes = record["fields"]["Notes"]
+
+      if record["fields"]["location_link"]
+        at_location_id = record["fields"]["location_link"].first
+      end
+
+      date_type = record["fields"]["date_type"]
+      end_date = record["fields"]["end date"]
+      earliest_begin_date = record["fields"]["Earliest begin date"]
+      order = record["fields"]["Order"]
+
+      major_event_type = record["fields"]["Major Event Type"]
+
+      Event.create!(
+        "at_event_id" => at_event_id,
+        "notes" => notes,
+        "at_location_id" => at_location_id,
+        "date_type" => date_type,
+        "end_date" => end_date,
+        "earliest_begin_date" => earliest_begin_date,
+        "order" => order,
+        "major_event_type" => major_event_type
+      )
+    end
+
+    # Rerun load_images until no offset is returned
+    if offset != ''
+      Rake::Task["db:load_events"].execute
+    else
+      puts "Finished loading all #{Event.count} events!"
+    end
+  end
 end

@@ -144,4 +144,38 @@ module LocationsHelper
     end
   end
 
+  def event_sources?
+    (@location.fortalezas_link.present? || @location.castillosnet_link.present? || @location.wikipedia_link.present?)
+  end
+
+  # def event_sources
+  #    [ (link_to 'Fortalezas.org', @location.fortalezas_link, target: :_blank), (link_to 'Castillos.net', @location.castillosnet_link, target: :_blank), (link_to 'Wikipedia', @location.wikipedia_link, target: :_blank) ]
+  # end
+
+  def event_sources_text
+    fortalezas = link_to 'Fortalezas.org', @location.fortalezas_link, target: :_blank
+    castillos = link_to 'Castillos.net', @location.castillosnet_link, target: :_blank
+    wikipedia = link_to 'Wikipedia', @location.wikipedia_link, target: :_blank
+
+    sources = []
+    if @location.fortalezas_link.present?
+      sources << fortalezas
+    end
+    if @location.castillosnet_link.present?
+      sources << castillos
+    end
+    if @location.wikipedia_link.present?
+      sources << wikipedia
+    end
+    sources
+  end
+
+  def image_display(image)
+    if image.id == @location.default_viewer_id
+      ""
+    else
+      "display:none;"
+    end
+  end
+
 end

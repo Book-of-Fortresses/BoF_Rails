@@ -169,8 +169,6 @@ tr {
   margin-bottom: 20px;
 }
 
-
-
 #location_previous_following {
   display: flex;
   flex-direction: row;
@@ -221,7 +219,7 @@ tr {
 .location-column {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 49%;
   align-items: flex-start;
 }
 
@@ -246,6 +244,7 @@ tr {
   /* position: sticky;
   top: 10%; */
   width: 100%;
+  height: 90vh;
   padding-bottom: 0px;
 }
 
@@ -255,7 +254,12 @@ tr {
   flex-basis: 800px;
   width: 100%;
   border: solid 1px dimgray;
+  height:100%;
   /* max-height: 700px; */
+}
+
+.openseadragon iframe {
+  height: 100%;
 }
 
 /* #location_first_column_first_row {
@@ -272,162 +276,58 @@ tr {
   justify-content: flex-start;
 } */
 
-#location_metadata {
+#location-metadata {
   width: 100%;
+  display: flex;
+  flex-direction: column;
   min-width: 200px;
   margin: 0 10px 10px 0;
   justify-content: flex-start;
 }
 
-/* #location_plan {
-  width: 57%;
-  min-width: 300px;
-  border: solid 1px dimgray;
-  border-radius: 5px;
-  padding: 5px;
-} */
-
-/* #location_plan img {
-  width: 100%;
-  height: auto;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-} */
-
-/* #location_image_gallery_wrapper {
+#location-events {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 100%;
+  margin-bottom: 20px;
+  border-bottom: solid 1px black;
 }
 
-#location_image_gallery {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-top: 10px;
+.event-category {
+  width: 25%;
   flex-grow: 1;
-  flex-shrink: 1;
-  width: 100%;
+  border-right: solid 1px black;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
-.location_image_card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-basis: 10vw;
-  padding: 5px;
-  margin: 3px 3px 10px 3px;
-  border: solid 1px dimgray;
-  border-radius: 5px;
-  max-height: 200px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.location_image_card_thumbnail {
-  overflow: hidden;
-} */
-
-/* .location_image_card_thumbnail img {
-  height: auto;
-}
-
-.location_image_card_metadata {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  max-height: 30%;
-  margin-top: 10px;
-}
-
-.location_image_card_metadata p {
-  margin: 0;
-  line-height: 1em;
-  position: relative;
-  left: 0px;
-}
-
-.landscape_view p {
-  margin: 0;
-  line-height: 1em;
-  position: relative;
-  left: 0px;
-} */
-
-
-
-/* #below_viewer_wrapper {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-#button_wrapper {
-  display: flex;
-  flex-direction: row;
-  width: 35%;
-  /* visibility: hidden; */
-}
-
-button {
-  background-color: #577C92;
-  border: none;
-  color: white;
-  font-size: 14px;
-  padding: 5px 15px;
-  text-align: center;
-  width: 100px;
-  height: 50px;
-  border-radius: 0 0 10px 10px;
-  border-style: solid;
-  border-width: 0 1px 1px 1px;
-  border-color: dimgray;
-}
-
-.openseadragon_button {
-  margin-right: 5px;
-}
-
-.agol_button {
-  width: 150px;
-}
-
-#current_image_metadata_wrapper {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-}
-
-#current_image_metadata {
-  width: 100%;
-  min-height: 60px;
-  border: 1px solid dimgray;
-  border-radius: 5px;
-  padding: 15px;
-  padding-bottom: 5px;
-  margin: 10px;
-  margin-top: 5px;
-}
-
-#current_image_metadata_wrapper p {
-  margin: 0;
-  line-height: 1.5em;
-  position: relative;
-  left: 0px;
-}
-
-#model_metadata {
+.event-category h3{
+  margin-bottom: 10px;
+  padding-left: 4px;
+  padding-right: 4px;
   text-align: center;
 }
 
-.tag_list {
+.event {
+  width: 90%;
+  margin-bottom: 15px;
+}
 
-} */
+.event p {
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.date-range {
+  text-align: center;
+  font-weight: bold;
+  left: 3px;
+}
+
+#charter-events {
+  border-right: none;
+}
+
 
 /*MEDIA QUERY*/
 @media only screen and (max-width : 900px) {

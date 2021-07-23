@@ -8,9 +8,10 @@ class LocationsController < ApplicationController
 
   def show
     # Pass parameters to locations_show_view.js.erb
-    js :images => @location.images_excluding_plan
-    js :collaborator => @location.collaborator_names
-    js :plan_url => @location.plan_url
+    js :images => @location.images
+    js :model_embed => @location.a360_3D_model_embed
+    # js :collaborator => @location.collaborator_names
+    # js :plan_url => @location.plan_url
   end
 
   private

@@ -1,0 +1,11 @@
+<div class='event'>
+  <% if event.date_range %>
+    <p class='date-range'><%= event.date_range %></p>
+  <% end %>
+  <% if event.date_type %>
+    <p><%= event.date_type %></p>
+  <% end %>
+  <% if event.notes %>
+    <p><%= event.notes %></p>
+  <% end %>
+</div>

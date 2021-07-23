@@ -3,20 +3,16 @@
   <%= render 'thumbnail_scroll' %>
   <div id="viewers-wrapper">
     <div id="location-first-column" class='location-column'>
+      <%= render 'viewer_select_left' %>
       <div id="left-viewer-wrapper" class="viewer-wrapper">
-        <div id="left-viewer-select">
-          <%= render 'viewer_select_left' %>
-        </div>
-        <%= render '3d_model' %>
+        <%= render '3d_model_left' %>
         <%= render 'openseadragon_left' %>
       </div>
     </div>
     <div id="location-second-column" class='location-column'>
+      <%= render 'viewer_select_right' %>
       <div id="right-viewer-wrapper" class="viewer-wrapper">
-        <div id="right-viewer-select">
-          <%= render 'viewer_select_right' %>
-        </div>
-        <%= render '3d_model' %>
+        <%= render '3d_model_right' %>
         <%= render 'openseadragon_right' %>
       </div>
     </div>
