@@ -4,12 +4,20 @@ class Location < ApplicationRecord
   has_many :images, :foreign_key => 'at_locations_table_id',
   :primary_key => 'at_locations_table_id'
 
+  has_many :events, :foreign_key => 'at_location_id', :primary_key => 'at_locations_table_id'
+
   def to_param
     slug
   end
 
   def collaborator_names
     collaborators.map(&:name).join(', ')
+  end
+
+  def model_collaborators
+    brittany = Collaborator.where(name: "Brittany Forniotis")
+    modelers = collaborators - brittany
+    modelers.map(&:name).join(", ")
   end
 
   # ex at_collaborator_id: "usr6jZBvB6JA46dMe,usrdrMXLmfCGRX390,usrRiFLmaKkNIn2E2"
@@ -50,8 +58,31 @@ class Location < ApplicationRecord
     images.select{ |image| image.image_category != "plan" }.sort_by{|image| image.image_category}
   end
 
+  def images_excluding_satellite
+    images.select{ |image| image.image_category != "satellite image" }
+  end
+
   def plan_url
     plan_image ? plan_image.url : ActionController::Base.helpers.asset_path('location/plan_unavailable.png')
   end
 
+  def transfer_events
+    events.select{|e| e.transfer? }.sort_by{|e| (e.order || 0)}
+  end
+
+  def building_events
+    events.select{|e| e.building? }.sort_by{|e| (e.order || 0)}
+  end
+
+  def military_events
+    events.select{|e| e.military? }.sort_by{|e| (e.order || 0)}
+  end
+
+  def charter_events
+    events.select{|e| e.charter? }.sort_by{|e| (e.order || 0)}
+  end
+
+  def default_viewer_id
+    images_excluding_satellite.detect{ |i| i.agol_slide_embed.present? }.id
+  end
 end
