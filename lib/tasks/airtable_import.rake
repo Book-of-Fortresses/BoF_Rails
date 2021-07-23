@@ -37,7 +37,7 @@ namespace :db do
   desc "Import collaborators from Airtable"
   task :load_collaborators => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Collaborators'
-    response = HTTParty.get(url, headers: {"Authorization" => ENV[AIRTABLE_TOKEN]})
+    response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
     collaborators_json = response.parsed_response["records"].to_a
 
     collaborators_json.each do |record|
@@ -69,7 +69,7 @@ namespace :db do
   offset = ''
   task :load_images => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Images/?offset='+offset
-    response = HTTParty.get(url, headers: {"Authorization" => ENV[AIRTABLE_TOKEN]})
+    response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
     # saves offset value from end of json to submit with next request
     if response.parsed_response["offset"]
       offset = response.parsed_response["offset"]
@@ -157,7 +157,7 @@ namespace :db do
   desc "Import locations from Airtable"
   task :load_locations => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Locations'
-    response = HTTParty.get(url, headers: {"Authorization" => ENV[AIRTABLE_TOKEN]})
+    response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
     locations_json = response.parsed_response["records"].to_a
 
     locations_json.each do |record|
@@ -233,7 +233,7 @@ namespace :db do
   offset = ''
   task :load_events => [:environment] do
     url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Events/?offset='+offset
-    response = HTTParty.get(url, headers: {"Authorization" => ENV[AIRTABLE_TOKEN]})
+    response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
 
     # saves offset value from end of json to submit with next request
     if response.parsed_response["offset"]
