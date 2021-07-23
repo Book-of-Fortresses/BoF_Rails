@@ -1,5 +1,5 @@
-<option value="<%= image.id %>"><%= image.title %></option>
+<option value="<%= image.id %>"><%= select_image_title(image) %></option>
 
 <% if image.agol_slide_embed %>
-  <option value="<%= image.id%>L"><%= image.title %> - 3D GIS</option>
+  <option value="<%= image.id%>L"><%= select_image_title(image) %> - 3D GIS</option>
 <% end %>

@@ -194,4 +194,19 @@ module LocationsHelper
     title.strip
   end
 
+  def select_image_title(image)
+    title = ""
+    if image.source
+      title.concat(image.formatted_source)
+    end
+    if image.image_category == "plan"
+      title.concat(" Plan")
+    elsif image.view_direction
+      unless image.image_category == "plan"
+        title.concat(" view: #{image.view_direction}")
+      end
+    end
+    title.strip
+  end
+
 end
