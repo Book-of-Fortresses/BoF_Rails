@@ -1,1 +1,7 @@
-<a><%= image_tag(image.large_thumbnail_url) %><%= image_title(image) .html_safe %></a>
+<% if image.large_thumbnail_url %>
+  <a><%= image_tag(image.large_thumbnail_url) %><%= image_title(image) .html_safe %></a>
+<% elsif image.url %>
+  <a><%= image_tag(image.url) %><%= image_title(image) .html_safe %></a>
+<% else %>
+  <a></a>
+<% end %>
