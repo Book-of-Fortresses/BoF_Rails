@@ -3,7 +3,7 @@
 <% if image.agol_slide_embed %>
   <% unless image.image_category == "plan" %>
     <div id="openseadragon_image_left_<%= image.id %>L" class="openseadragon" style='display: none;'>
-      <%= image.agol_slide_embed .html_safe %>
+      <%= image.agol_iframe .html_safe %>
     </div>
   <% end %>
 <% end %>

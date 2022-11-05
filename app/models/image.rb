@@ -26,4 +26,9 @@ class Image < ApplicationRecord
       source
     end
   end
+
+  def agol_iframe
+    return agol_slide_embed if agol_slide_embed.include? 'iframe'
+    '<iframe width="800" height="600" frameborder="0" scrolling="no" allowfullscreen src=' + '"' + agol_slide_embed + '"' + '></iframe>'
+  end
 end

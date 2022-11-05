@@ -79,8 +79,10 @@ namespace :db do
     puts "offset: " + offset
 
     images_json = response.parsed_response["records"].to_a
-
+    # puts images_json
     images_json.each do |record|
+      # puts record["fields"]["primary_site_name"]
+      # puts record["fields"]["image"]
       at_images_table_id = record["id"]
       page_number = record["fields"].try(:[], "page_number")
       slug = record["fields"]["slug"]
@@ -109,40 +111,46 @@ namespace :db do
 
       at_images_table_time_created = record["fields"]["createdTime"]
 
-      record["fields"]["image"].each do |image|
-        attachment_fields(image)
-        Image.create!(
-          # directly from images table:
-          "slug" => slug,
-          "at_images_table_id" => at_images_table_id,
-          "at_locations_table_id" => at_locations_table_id,
-          "image_category" => image_category,
-          "source" => source,
-          "page_number" => page_number,
-          "primary_site_name" => primary_site_name,
-          "view_direction" => view_direction,
-          "secondary_site_name" => secondary_site_name,
-          "secondary_site_kingdom" => secondary_site_kingdom,
-          "number_of_watchtowers" => number_of_watchtowers,
-          "exterior_features" => exterior_features,
-          "status" => status,
-          "fortress_features" => fortress_features,
-          "agol_slide_embed" => agol_slide_embed,
-          "at_images_table_time_created" => at_images_table_time_created,
+      begin
+        record["fields"]["image"].each do |image|
+          attachment_fields(image)
+          Image.create!(
+            # directly from images table:
+            "slug" => slug,
+            "at_images_table_id" => at_images_table_id,
+            "at_locations_table_id" => at_locations_table_id,
+            "image_category" => image_category,
+            "source" => source,
+            "page_number" => page_number,
+            "primary_site_name" => primary_site_name,
+            "view_direction" => view_direction,
+            "secondary_site_name" => secondary_site_name,
+            "secondary_site_kingdom" => secondary_site_kingdom,
+            "number_of_watchtowers" => number_of_watchtowers,
+            "exterior_features" => exterior_features,
+            "status" => status,
+            "fortress_features" => fortress_features,
+            "agol_slide_embed" => agol_slide_embed,
+            "at_images_table_time_created" => at_images_table_time_created,
 
-          # from attachment_fields method
-          "at_image_id" => @at_image_id,
-          "url" => @url,
-          "filename" => @filename,
-          "size" => @size,
-          "image_type" => @image_type,
-          "small_thumbnail_url" => @small_thumbnail_url,
-          "small_thumbnail_width" => @small_thumbnail_width,
-          "small_thumbnail_height" => @small_thumbnail_height,
-          "large_thumbnail_url" => @large_thumbnail_url,
-          "large_thumbnail_width" => @large_thumbnail_width,
-          "large_thumbnail_height" => @large_thumbnail_height,
-        )
+            # from attachment_fields method
+            "at_image_id" => @at_image_id,
+            "url" => @url,
+            "filename" => @filename,
+            "size" => @size,
+            "image_type" => @image_type,
+            "small_thumbnail_url" => @small_thumbnail_url,
+            "small_thumbnail_width" => @small_thumbnail_width,
+            "small_thumbnail_height" => @small_thumbnail_height,
+            "large_thumbnail_url" => @large_thumbnail_url,
+            "large_thumbnail_width" => @large_thumbnail_width,
+            "large_thumbnail_height" => @large_thumbnail_height,
+          )
+        end
+      rescue
+        puts record
+        puts primary_site_name
+        puts view_direction
       end
     end
 
