@@ -20,7 +20,7 @@ end
 
 def attachment_fields(image)
   @at_image_id = image.try(:[], "id")
-  @url = image["url"]
+  @url = image_url(image)
   @filename = image["filename"]
   @size = image["size"]
   @image_type = image["type"]
@@ -30,6 +30,10 @@ def attachment_fields(image)
   @large_thumbnail_url = image.try(:[], "thumbnails").try(:[], "large").try(:[], "url")
   @large_thumbnail_width = image.try(:[], "thumbnails").try(:[], "large").try(:[], "width")
   @large_thumbnail_height = image.try(:[], "thumbnails").try(:[], "large").try(:[], "height")
+end
+
+def image_url(fields)
+  fields["url"]
 end
 
 namespace :db do
@@ -112,6 +116,8 @@ namespace :db do
       at_images_table_time_created = record["fields"]["createdTime"]
 
       begin
+        @amazon_url = amazon_url(record)
+        @amazon_thumbnail_url = amazon_thumbnail_url(record)
         record["fields"]["image"].each do |image|
           attachment_fields(image)
           Image.create!(
@@ -135,14 +141,14 @@ namespace :db do
 
             # from attachment_fields method
             "at_image_id" => @at_image_id,
-            "url" => @url,
+            "url" => @amazon_url,
             "filename" => @filename,
             "size" => @size,
             "image_type" => @image_type,
             "small_thumbnail_url" => @small_thumbnail_url,
             "small_thumbnail_width" => @small_thumbnail_width,
             "small_thumbnail_height" => @small_thumbnail_height,
-            "large_thumbnail_url" => @large_thumbnail_url,
+            "large_thumbnail_url" => @amazon_thumbnail_url,
             "large_thumbnail_width" => @large_thumbnail_width,
             "large_thumbnail_height" => @large_thumbnail_height,
           )
@@ -152,6 +158,34 @@ namespace :db do
         puts primary_site_name
         puts view_direction
       end
+    end
+
+    def amazon_url(record)
+      filename = record["fields"]["filename"]
+      source = record["fields"]["source"]
+      folder = case source
+               when "Codex A"
+                 "codex_a"
+               when "Codex B"
+                 "codex_b"
+               when "1642_watercolor"
+                 "watercolors"
+               end
+      "https://book-of-fortresses.s3.amazonaws.com/#{folder}/#{filename}"
+    end
+
+    def amazon_thumbnail_url(record)
+      filename = record["fields"]["filename"]
+      source = record["fields"]["source"]
+      folder = case source
+               when "Codex A"
+                 "codex_a"
+               when "Codex B"
+                 "codex_b"
+               when "1642_watercolor"
+                 "watercolors"
+               end
+      "https://book-of-fortresses.s3.amazonaws.com/#{folder}/thumbnails/#{filename}"
     end
 
     # Rerun load_images until no offset is returned
