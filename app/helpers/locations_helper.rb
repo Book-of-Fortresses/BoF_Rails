@@ -178,6 +178,14 @@ module LocationsHelper
     end
   end
 
+  def right_display(image)
+    if image.id == @location.default_right_viewer_id
+      ""
+    else
+      "display:none;"
+    end
+  end
+
   def image_title(image)
     title = ""
     if image.source

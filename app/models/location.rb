@@ -83,6 +83,19 @@ class Location < ApplicationRecord
   end
 
   def default_viewer_id
-    images_excluding_satellite.detect{|i| (i.image_category != "plan" && i.agol_slide_embed.present?) }.id
+    default_viewer_image&.id || images_excluding_satellite.detect{|i| (i.image_category != "plan")}&.id
+  end
+
+  def default_right_viewer_id
+    if default_viewer_image.nil?
+      valid_choices = images_excluding_satellite.select{|i| (i.image_category != "plan")}.map(&:id)
+      (valid_choices - [default_viewer_id])&.first
+    else 
+      nil 
+    end
+  end
+
+  def default_viewer_image 
+    images_excluding_satellite.detect{|i| (i.image_category != "plan" && i.agol_slide_embed.present?) }
   end
 end
