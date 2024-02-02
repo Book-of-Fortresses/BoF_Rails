@@ -36,6 +36,35 @@ def image_url(fields)
   fields["url"]
 end
 
+def amazon_url(record)
+  filename = record["fields"]["filename"]
+  source = record["fields"]["source"]
+  folder = case source
+           when "Codex A"
+             "codex_a"
+           when "Codex B"
+             "codex_b"
+           when "1642_watercolor"
+             "watercolors"
+           end
+  "https://book-of-fortresses.s3.amazonaws.com/#{folder}/#{filename}"
+end
+
+def amazon_thumbnail_url(record)
+  filename = record["fields"]["filename"]
+  source = record["fields"]["source"]
+  folder = case source
+           when "Codex A"
+             "codex_a"
+           when "Codex B"
+             "codex_b"
+           when "1642_watercolor"
+             "watercolors"
+           end
+  "https://book-of-fortresses.s3.amazonaws.com/#{folder}/thumbnails/#{filename}"
+end
+
+
 namespace :db do
 
   desc "Import collaborators from Airtable"
@@ -70,17 +99,12 @@ namespace :db do
   end
 
   desc "Import images from Airtable"
-  offset = ''
   task :load_images => [:environment] do
-    url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Images/?offset='+offset
+    url = 'https://api.airtable.com/v0/appTZa4lVuewDsuyA/Images/?offset='.concat(@offset || '')
     response = HTTParty.get(url, headers: {"Authorization" => ENV['AIRTABLE_TOKEN']})
     # saves offset value from end of json to submit with next request
-    if response.parsed_response["offset"]
-      offset = response.parsed_response["offset"]
-    else
-      offset = ''
-    end
-    puts "offset: " + offset
+    @offset = response.parsed_response["offset"]
+    puts response.parsed_response["records"].count
 
     images_json = response.parsed_response["records"].to_a
     # puts images_json
@@ -160,36 +184,9 @@ namespace :db do
       end
     end
 
-    def amazon_url(record)
-      filename = record["fields"]["filename"]
-      source = record["fields"]["source"]
-      folder = case source
-               when "Codex A"
-                 "codex_a"
-               when "Codex B"
-                 "codex_b"
-               when "1642_watercolor"
-                 "watercolors"
-               end
-      "https://book-of-fortresses.s3.amazonaws.com/#{folder}/#{filename}"
-    end
-
-    def amazon_thumbnail_url(record)
-      filename = record["fields"]["filename"]
-      source = record["fields"]["source"]
-      folder = case source
-               when "Codex A"
-                 "codex_a"
-               when "Codex B"
-                 "codex_b"
-               when "1642_watercolor"
-                 "watercolors"
-               end
-      "https://book-of-fortresses.s3.amazonaws.com/#{folder}/thumbnails/#{filename}"
-    end
-
+    
     # Rerun load_images until no offset is returned
-    if offset != ''
+    if @offset.present?
       Rake::Task["db:load_images"].execute
     else
       puts "Finished loading all the images!"
