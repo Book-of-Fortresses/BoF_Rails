@@ -46,6 +46,8 @@ def amazon_url(record)
              "codex_b"
            when "1642_watercolor"
              "watercolors"
+           when "photograph"
+             "photograph"
            end
   "https://book-of-fortresses.s3.amazonaws.com/#{folder}/#{filename}"
 end
@@ -60,6 +62,8 @@ def amazon_thumbnail_url(record)
              "codex_b"
            when "1642_watercolor"
              "watercolors"
+           when "photograph"
+             "photograph"
            end
   "https://book-of-fortresses.s3.amazonaws.com/#{folder}/thumbnails/#{filename}"
 end
@@ -184,7 +188,7 @@ namespace :db do
       end
     end
 
-    
+
     # Rerun load_images until no offset is returned
     if @offset.present?
       Rake::Task["db:load_images"].execute
