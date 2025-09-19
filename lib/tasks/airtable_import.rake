@@ -47,7 +47,7 @@ def amazon_url(record)
            when "1642_watercolor"
              "watercolors"
            when "photograph"
-             "photograph"
+             "photographs"
            end
   "https://book-of-fortresses.s3.amazonaws.com/#{folder}/#{filename}"
 end
@@ -63,7 +63,7 @@ def amazon_thumbnail_url(record)
            when "1642_watercolor"
              "watercolors"
            when "photograph"
-             "photograph"
+             "photographs"
            end
   "https://book-of-fortresses.s3.amazonaws.com/#{folder}/thumbnails/#{filename}"
 end
