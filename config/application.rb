@@ -11,7 +11,7 @@ require 'action_mailer/railtie'
 require 'action_view/railtie'
 require 'sprockets/railtie'          # keep if you use the asset pipeline
 # require 'active_storage/engine'    # <-- leave this commented out
-# require 'action_cable/engine'      # add if you use Action Cable
+require 'action_cable/engine'      # add if you use Action Cable
 
 Bundler.require(*Rails.groups)
 
