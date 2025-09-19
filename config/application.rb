@@ -1,10 +1,18 @@
-require 'logger'
+# config/application.rb
+require 'logger'                     # keep this at the top (from earlier fix)
 require_relative 'boot'
 
-require 'rails/all'
+require 'rails'                      # instead of 'rails/all'
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_view/railtie'
+require 'sprockets/railtie'          # keep if you use the asset pipeline
+# require 'active_storage/engine'    # <-- leave this commented out
+# require 'action_cable/engine'      # add if you use Action Cable
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module BoFRails
