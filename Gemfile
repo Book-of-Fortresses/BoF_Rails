@@ -7,7 +7,7 @@ end
 
 ruby '~> 3.2.9'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 7'
 gem 'sprockets', '~>3.7.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -42,7 +42,7 @@ gem 'httparty'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # To use postgis
-gem 'activerecord-postgis-adapter', '~> 5.2'
+gem 'activerecord-postgis-adapter', '~> 8'
 
 # page-specific JavaScript
 gem 'paloma', '~> 5.1.0'
