@@ -55,7 +55,7 @@ module LocationsHelper
   end
 
   def laser_icon
-    image_tag "locations/icons/font_awesome/PNG/globe.png", title: 'laser icon'
+    image_tag "locations/icons/font_awesome/PNG/laser.png", title: 'laser icon'
   end
 
   def lidar_icon(location)
