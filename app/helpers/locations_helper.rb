@@ -49,6 +49,21 @@ module LocationsHelper
     copter_icon
   end
 
+  # LIDAR Data
+  def lidar_text
+   'LIDAR'
+  end
+
+  def laser_icon
+    image_tag "locations/icons/font_awesome/PNG/laser.png", title: 'laser icon'
+  end
+
+  def lidar_icon(location)
+    return blank_icon unless location&.stage&.include? lidar_text
+
+    laser_icon
+  end
+
   # Views
   def views_text
     '3D Views Added to ArcGIS'
