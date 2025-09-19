@@ -82,4 +82,5 @@ production:
   <<: *default
   database: BoF_Rails_production
   username: BoF_Rails
+  url: <%= ENV["DATABASE_URL"] %>
   password: <%= ENV['BOF_RAILS_DATABASE_PASSWORD'] %>
